@@ -21,4 +21,32 @@ public interface ISwitchConfiguration extends IGameBorderConfiguration {
 	 * @param playerDontReviveTime The time after which a player respawn in spectator mode.
 	 */
 	void setPlayerDontReviveTime(LocalTime playerDontReviveTime);
+
+	/**
+	 * Define the number of player(s) switched between teams throughout the duration of the game.
+	 * 
+	 * @param parseInt The number you choose.
+	 */
+	void setNumberOfPlayerSwitchable(int parseInt);
+
+	/**
+	 * Define the number of player(s) switched between teams throughout the duration of the game.
+	 * 
+	 * @return The chosen number
+	 */
+	String getNumberOfPlayerSwitchable();
+
+	/**
+	 * Define if the switch is enabled or not when the borders are moving
+	 * 
+	 * @param letter
+	 */
+	void setSwitchAfterBorderMoves(String letter);
+
+	/**
+	 * Define if the switch is enabled or not when the borders are moving
+	 * 
+	 * @return if switch is enabled or not
+	 */
+	Object getSwitchAfterBorderMoves();
 }
