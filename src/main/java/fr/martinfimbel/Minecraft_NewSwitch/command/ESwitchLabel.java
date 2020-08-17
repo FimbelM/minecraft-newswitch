@@ -3,7 +3,8 @@ package fr.martinfimbel.Minecraft_NewSwitch.command;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ILabel;
 
 public enum ESwitchLabel implements ILabel {
-	PLAYER_DONT_REVIVE_TIME("playerDontReviveTime");
+	PLAYER_DONT_REVIVE_TIME("PlayerDontReviveTime"), NUMBER_OF_SWITCHABLE_PLAYER_PER_TEAM("NumberOfSwitchablePlayerPerTeam"),
+	SWITCH_AFTER_BORDER_MOVES("SwitchAfterBorderMoves");
 
 	private String label;
 
