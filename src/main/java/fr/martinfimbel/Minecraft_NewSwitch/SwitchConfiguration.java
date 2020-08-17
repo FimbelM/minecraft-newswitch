@@ -64,4 +64,28 @@ public class SwitchConfiguration extends AbstractGameBorderConfiguration impleme
 		joiner.add("Pvp time : " + DisplayHelper.toString(getPvpTime(), true));
 		return joiner.toString();
 	}
+
+	@Override
+	public void setNumberOfPlayerSwitchable(int parseInt) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public String getNumberOfPlayerSwitchable() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setSwitchAfterBorderMoves(String letter) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Object getSwitchAfterBorderMoves() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
