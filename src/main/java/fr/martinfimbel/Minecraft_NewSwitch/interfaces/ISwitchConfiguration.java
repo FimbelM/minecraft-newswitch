@@ -49,4 +49,46 @@ public interface ISwitchConfiguration extends IGameBorderConfiguration {
 	 * @return if switch is enabled or not
 	 */
 	Object getSwitchAfterBorderMoves();
+
+	/**
+	 * Define if the switch is activated even if it remains only one player in a team
+	 * 
+	 * @param letter (y,Y,n or N)
+	 */
+	void setOnePlayerSwitch(String letter);
+
+	/**
+	 * Reads if the switch is activated even if it remains only one player in a team
+	 * 
+	 * @return letter (y,Y,n or N)
+	 */
+	Object getOnePlayerSwitch();
+
+	/**
+	 * Define the time at which first switch occurs
+	 * 
+	 * @param parse hh:mm:ss
+	 */
+	void setStartSwitchTime(LocalTime parse);
+
+	/**
+	 * Reads the time at which first switch occurs
+	 * 
+	 * @return hh:mm:ss
+	 */
+	LocalTime getStartSwitchTime();
+
+	/**
+	 * Define the time at which every switch following the first one will occur periodically
+	 * 
+	 * @param parse Time hh:mm:ss
+	 */
+	void setPeriodSwitchTime(LocalTime parse);
+
+	/**
+	 * Reads the time at which every switch following the first one will occur periodically
+	 * 
+	 * @return parse hh:mm:ss
+	 */
+	LocalTime getPeriodSwitchTime();
 }
