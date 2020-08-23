@@ -41,7 +41,7 @@ public class SwitchParent extends AbstractGameBorderConfigurationParent<ISwitchC
 	}
 
 	@Override
-	protected IMapPersistenceEdition<ISwitchConfiguration> getCurrentEdition() {
+	protected IMapPersistenceEdition<ISwitchConfiguration> getDetailsEdition() {
 		return SwitchEditionFactory.currentSwitch();
 	}
 
