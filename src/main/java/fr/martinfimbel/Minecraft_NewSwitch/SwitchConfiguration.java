@@ -88,4 +88,40 @@ public class SwitchConfiguration extends AbstractGameBorderConfiguration impleme
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void setOnePlayerSwitch(String letter) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Object getOnePlayerSwitch() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setStartSwitchTime(LocalTime parse) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public LocalTime getStartSwitchTime() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setPeriodSwitchTime(LocalTime parse) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public LocalTime getPeriodSwitchTime() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
