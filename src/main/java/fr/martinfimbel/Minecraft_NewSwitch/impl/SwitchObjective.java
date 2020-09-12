@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scoreboard.DisplaySlot;
 
+import fr.martinfimbel.Minecraft_NewSwitch.entries.TimeBeforePVPEntry;
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitchConfiguration;
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitchObjective;
 import fr.pederobien.minecraftgameplateform.border.IBorderConfiguration;
@@ -80,6 +81,8 @@ public class SwitchObjective extends GameObjective<ISwitchConfiguration> impleme
 		add(score -> new CenterEntry(score, getConfiguration().getBorder(WorldManager.OVERWORLD).get().getBorderCenter())
 				.addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
 		emptyEntry(score--);
+		add(score -> new TimeBeforePVPEntry(score, getConfiguration()).addUpdater(new TimeTaskObserverEntryUpdater()));
+		emptyEntry(score--);
 		for (IBorderConfiguration border : getConfiguration().getBorders())
 			add(score -> new WorldBorderSizeCountDownEntry(score, border, "#").setDisplayHalfSize(true).addUpdater(new TimeTaskObserverEntryUpdater()));
 	}
@@ -96,4 +99,5 @@ public class SwitchObjective extends GameObjective<ISwitchConfiguration> impleme
 		addEntry(constructor.apply(score));
 		score--;
 	}
+
 }
