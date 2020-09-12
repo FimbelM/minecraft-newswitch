@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dictionary>
+	<name>Game</name>
+	<version>1.0</version>
+	<locales>
+		<locale>en</locale>
+		<locale>en-EN</locale>
+		<locale>en-UK</locale>
+		<locale>en-CA</locale>
+	</locales>
+	<messages>
+		<message>
+			<code>SW_EXPLANATION</code>
+			<value>To configure a Switch configuration</value>
+		</message>
+		<message>
+			<code>NEW_SW__EXPLANATION</code>
+			<value>To create a new switch configuration</value>
+		</message>
+		<message>
+			<code>NEW_SW__NAME_IS_MISSING</code>
+			<value>Cannot create a new switch configuration, the name is missing</value>
+		</message>
+		<message>
+			<code>NEW_SW__NAME_ALREADY_TAKEN</code>
+			<value>The switch configuration %s already exists</value>
+		</message>
+		<message>
+			<code>NEW_SW__CONFIGURATION_CREATED</code>
+			<value>The switch configuration %s has been created</value>
+		</message>
+		<message>
+			<code>RENAME_SW__EXPLANATION</code>
+			<value>To rename the current switch configuration</value>
+		</message>
+		<message>
+			<code>RENAME_SW__NAME_IS_MISSING</code>
+			<value>Cannot rename switch configuration %s, the name is missing</value>
+		</message>
+		<message>
+			<code>RENAME_SW__NAME_ALREADY_TAKEN</code>
+			<value>Cannot rename switch configuration %s as %s, this configuration already exists</value>
+		</message>
+		<message>
+			<code>RENAME_SW__CONFIGURATION_RENAMED</code>
+			<value>The switch configuration %s has been renamed as %s</value>
+		</message>
+		<message>
+			<code>SAVE_SW__EXPLANATION</code>
+			<value>To save the current switch configuration</value>
+		</message>
+		<message>
+			<code>SAVE_SW__CONFIGURATION_SAVED</code>
+			<value>The switch configuration %s has been saved</value>
+		</message>
+		<message>
+			<code>LIST_SW__EXPLANATION</code>
+			<value>To display the name of registered switch configurations</value>
+		</message>
+		<message>
+			<code>LIST_SW__NO_REGISTERED_CONFIGURATION</code>
+			<value>There is any registered switch configuration</value>
+		</message>
+		<message>
+			<code>LIST_SW__ONE_REGISTERED_CONFIGURATION</code>
+			<value>There is one registered switch configuration :%n%s</value>
+		</message>
+		<message>
+			<code>LIST_SW__SEVERAL_ELEMENTS</code>
+			<value>List of registered switch configurations :%n%s</value>
+		</message>
+		<message>
+			<code>DELETE_SW__EXPLANATION</code>
+			<value>To delete the file of a switch configuration</value>
+		</message>
+		<message>
+			<code>DELETE_SW__NAME_IS_MISSING</code>
+			<value>Cannot delete the file of an switch configuration, the name is missing</value>
+		</message>
+		<message>
+			<code>DELETE_SW__DID_NOT_DELETE</code>
+			<value>The deletion of the %s switch configuration file was not successful</value>
+		</message>
+		<message>
+			<code>DELETE_SW__CONFIGURATION_DELETED</code>
+			<value>The %s switch configuration file has been deleted</value>
+		</message>
+		<message>
+			<code>DETAILS_SW__EXPLANATION</code>
+			<value>To display the current switch configuration characteristics</value>
+		</message>
+		<message>
+			<code>DETAILS_SW__ON_DETAILS</code>
+			<value>Characteristics of the current switch configuration :%n%s</value>
+		</message>
+		<message>
+			<code>LOAD_SW__EXPLANATION</code>
+			<value>To load an switch configuration</value>
+		</message>
+		<message>
+			<code>LOAD_SW__NAME_IS_MISSING</code>
+			<value>Cannot load an switch configuration, the name is missing</value>
+		</message>
+		<message>
+			<code>LOAD_SW__CONFIGURATION_LOADED</code>
+			<value>The configuration %s has been loaded</value>
+		</message>
+		<message>
+			<code>PLAYER_DONT_REVIVE_TIME__EXPLANATION</code>
+			<value>To set the time after which players respawn in spectator mode</value>
+		</message>
+		<message>
+			<code>PLAYER_DONT_REVIVE_TIME__TIME_IS_MISSING</code>
+			<value>Cannot set the time after which players respawn in spectator mode, the time is missing</value>
+		</message>
+		<message>
+			<code>PLAYER_DONT_REVIVE_TIME__FROM_THE_BEGINNING</code>
+			<value>Players respawn in spectator mode from the beginning of the game</value>
+		</message>
+		<message>
+			<code>PLAYER_DONT_REVIVE_TIME__TIME_DEFINED</code>
+			<value>Players respawn in spectator mode after %s of play</value>
+		</message>
+		<message>
+			<code>PVP_ENABLED</code>
+			<value>Pvp enabled</value>
+		</message>
+		<message>
+			<code>PLAYER_DONT_REVIVE</code>
+			<value>No more resurrection</value>
+		</message>
+		<message>
+			<code>NUMBER_OF_SWITCHABLE_PLAYER_PER_TEAM_EXPLANATION</code>
+			<value>To choose the number of player switched per team</value> 
+		</message>
+		<message>
+			<code>NUMBER_OF_SWITCHED_PLAYERS_INFERIOR_AT_ONE</code>
+			<value>The number of switchable player must be equal or superior at one</value> 
+		</message>
+		<message>
+			<code>NUMBER_OF_SWITCHABLE_PLAYER_PER_TEAM_DEFINED</code>
+			<value>The number of switchable player has been defined to %s</value> 
+		</message>
+		<message>
+			<code>NUMBER_OF_SWITCHABLE_PLAYER_PER_TEAM_MISSING_NUMBER</code>
+			<value>The number of switchable player hasn't been defined</value> 
+		</message>
+		<message>
+			<code>NUMBER_OF_SWITCHABLE_PLAYER_PER_TEAM_BAD_FORMAT</code>
+			<value>The number of switchable player must be an integer</value> 
+		</message>
+		<message>
+			<code>NUMBER_OF_SWITCHABLE_PLAYER_ON_TAB_COMPLETE</code>
+			<value>numberOfSwitchablePlayer</value> 
+		</message>
+		<message>
+			<code>SWITCH_AFTER_BORDER_MOVES_EXPLANATION</code>
+			<value>To choose if switch player after border moves is activated or not</value> 
+		</message>
+		<message>
+			<code>SWITCH_AFTER_BORDER_MOVES_DEFINED</code>
+			<value>Switch after border moves has been defined to %s</value> 
+		</message>
+		<message>
+			<code>SWITCH_AFTER_BORDER_MOVES_WRONG_FORMAT</code>
+			<value>Switch after border moves must be a letter</value> 
+		</message>		
+		<message>
+			<code>SWITCH_AFTER_BORDER_MOVES_TAB_COMPLETE</code>
+			<value>y, Y, n or N</value> 
+		</message>
+		<message>
+			<code>ONE_PLAYER_SWITCH_EXPLANATION</code>
+			<value>To choose if a player that is alone in a team can be switched</value> 
+		</message>
+		<message>
+			<code>ONE_PLAYER_SWITCH_DEFINED</code>
+			<value>One player switch has been defined to %s</value> 
+		</message>		
+		<message>
+			<code>ONE_PLAYER_SWITCH_WRONG_FORMAT</code>
+			<value>One player switch moves must be a letter</value> 
+		</message>		
+		<message>
+			<code>ONE_PLAYER_SWITCH_TAB_COMPLETE</code>
+			<value>y, Y, n or N</value> 
+		</message>
+		<message>
+			<code>START_SWITCH_TIME_EXPLANATION</code>
+			<value>To define the time of the first switch</value> 
+		</message>
+		<message>
+			<code>START_SWITCH_TIME_DEFINED</code>
+			<value>Start switch time has been defined at %s</value> 
+		</message>
+		<message>
+			<code>SWITCH_TIME_MISSING_TIME</code>
+			<value>Start switch time hasn't been defined</value> 
+		</message>		
+		<message>
+			<code>BAD_TIME_FORMAT</code>
+			<value>Start switch time must be at format hh:mm:ss</value> 
+		</message>
+		<message>
+			<code>START_SWITCH_TIME_TAB_COMPLETE</code>
+			<value>hh:mm:ss</value> 
+		</message>	
+		<message>
+			<code>SWITCH_TIME_EXPLANATION</code>
+			<value>To define the time between periodic switch</value> 
+		</message>
+		<message>
+			<code>SWITCH_TIME_DEFINED</code>
+			<value>Switch time has been defined at %s</value> 
+		</message>
+	</messages>
+</dictionary>
