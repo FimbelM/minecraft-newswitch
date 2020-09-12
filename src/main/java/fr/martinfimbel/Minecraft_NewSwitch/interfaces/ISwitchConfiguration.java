@@ -91,4 +91,18 @@ public interface ISwitchConfiguration extends IGameBorderConfiguration {
 	 * @return parse hh:mm:ss
 	 */
 	LocalTime getPeriodSwitchTime();
+
+	/**
+	 * Define if switch are going to be periodic or randomly placed
+	 * 
+	 * @param letter Y, y, N or n
+	 */
+	void setRandomSwitch(String letter);
+
+	/**
+	 * Define if switch are going to be periodic or randomly placed
+	 * 
+	 * @param letter Y, y, N or n
+	 */
+	Object getRandomSwitch();
 }
