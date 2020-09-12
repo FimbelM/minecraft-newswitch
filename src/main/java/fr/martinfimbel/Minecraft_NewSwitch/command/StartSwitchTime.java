@@ -10,6 +10,7 @@ import org.bukkit.command.CommandSender;
 
 import fr.martinfimbel.Minecraft_NewSwitch.ESwitchMessageCode;
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitchConfiguration;
+import fr.pederobien.minecraftdevelopmenttoolkit.utils.DisplayHelper;
 import fr.pederobien.minecraftgameplateform.impl.editions.AbstractLabelEdition;
 
 public class StartSwitchTime extends AbstractLabelEdition<ISwitchConfiguration> {
@@ -22,8 +23,7 @@ public class StartSwitchTime extends AbstractLabelEdition<ISwitchConfiguration> 
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		try {
 			get().setStartSwitchTime(LocalTime.parse(args[0]));
-			sendMessageToSender(sender, ESwitchMessageCode.START_SWITCH_TIME_DEFINED, "" + get().getStartSwitchTime().getHour(),
-					"" + get().getStartSwitchTime().getMinute(), "" + get().getStartSwitchTime().getSecond());
+			sendMessageToSender(sender, ESwitchMessageCode.START_SWITCH_TIME_DEFINED, DisplayHelper.toString(get().getStartSwitchTime(), false));
 			return true;
 		} catch (IndexOutOfBoundsException e) {
 			sendMessageToSender(sender, ESwitchMessageCode.SWITCH_TIME_MISSING_TIME);
