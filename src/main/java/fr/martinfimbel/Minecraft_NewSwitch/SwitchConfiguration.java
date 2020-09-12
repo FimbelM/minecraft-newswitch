@@ -24,7 +24,7 @@ public class SwitchConfiguration extends AbstractGameBorderConfiguration impleme
 		super(name);
 		game = new Switch(this);
 
-		add(new BorderConfiguration("DefaultHGOverworldBorder"));
+		add(new BorderConfiguration("DefaultSWOverworldBorder"));
 		add(PlateformTeam.of("Jedi", EColor.DARK_AQUA));
 		add(PlateformTeam.of("Clones", EColor.GREEN));
 		add(PlateformTeam.of("Sith", EColor.DARK_RED));
@@ -121,6 +121,18 @@ public class SwitchConfiguration extends AbstractGameBorderConfiguration impleme
 
 	@Override
 	public LocalTime getPeriodSwitchTime() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setRandomSwitch(String letter) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Object getRandomSwitch() {
 		// TODO Auto-generated method stub
 		return null;
 	}
