@@ -5,7 +5,7 @@ import org.bukkit.plugin.Plugin;
 import fr.martinfimbel.Minecraft_NewSwitch.ESwitchMessageCode;
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitchConfiguration;
 import fr.martinfimbel.Minecraft_NewSwitch.persistence.SwitchPersistence;
-import fr.pederobien.minecraftgameplateform.impl.editions.AbstractGameBorderConfigurationParent;
+import fr.pederobien.minecraftborder.editions.AbstractGameBorderConfigurationParent;
 import fr.pederobien.minecraftgameplateform.interfaces.editions.IMapPersistenceEdition;
 
 public class SwitchParent extends AbstractGameBorderConfigurationParent<ISwitchConfiguration> {

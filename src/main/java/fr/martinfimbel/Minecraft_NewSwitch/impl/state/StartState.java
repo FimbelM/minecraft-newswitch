@@ -8,7 +8,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitch;
-import fr.pederobien.minecraftgameplateform.border.IBorderConfiguration;
+import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.helpers.TeamHelper;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecraftmanagers.PlayerManager;

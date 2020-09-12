@@ -1,8 +1,8 @@
 package fr.martinfimbel.Minecraft_NewSwitch.interfaces.state;
 
-import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.ITimeLineObserver;
+import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.IObsTimeLine;
 
-public interface IStateGame extends ITimeLineObserver {
+public interface IStateGame extends IObsTimeLine {
 
 	IGameState getCurrentState();
 

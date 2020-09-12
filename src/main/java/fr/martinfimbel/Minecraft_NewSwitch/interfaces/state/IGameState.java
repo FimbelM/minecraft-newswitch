@@ -1,9 +1,9 @@
 package fr.martinfimbel.Minecraft_NewSwitch.interfaces.state;
 
 import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
-import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.ITimeLineObserver;
+import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.IObsTimeLine;
 
-public interface IGameState extends ITimeLineObserver {
+public interface IGameState extends IObsTimeLine {
 
 	/**
 	 * @return True if the game is successful initiated, false otherwise.

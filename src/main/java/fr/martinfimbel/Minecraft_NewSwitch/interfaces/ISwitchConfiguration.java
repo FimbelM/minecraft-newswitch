@@ -2,7 +2,7 @@ package fr.martinfimbel.Minecraft_NewSwitch.interfaces;
 
 import java.time.LocalTime;
 
-import fr.pederobien.minecraftgameplateform.interfaces.element.IGameBorderConfiguration;
+import fr.pederobien.minecraftborder.interfaces.IGameBorderConfiguration;
 
 public interface ISwitchConfiguration extends IGameBorderConfiguration {
 

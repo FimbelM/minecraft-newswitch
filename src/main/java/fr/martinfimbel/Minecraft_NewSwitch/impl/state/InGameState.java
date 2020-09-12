@@ -14,7 +14,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitch;
-import fr.pederobien.minecraftgameplateform.border.IBorderConfiguration;
+import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.impl.element.EventListener;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
 import fr.pederobien.minecraftmanagers.MessageManager;

@@ -8,7 +8,7 @@ import org.w3c.dom.NodeList;
 
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitchConfiguration;
 import fr.martinfimbel.Minecraft_NewSwitch.persistence.SwitchXmlTag;
-import fr.pederobien.minecraftgameplateform.border.IBorderConfiguration;
+import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.impl.element.PlateformTeam;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
 import fr.pederobien.minecraftgameplateform.utils.EColor;

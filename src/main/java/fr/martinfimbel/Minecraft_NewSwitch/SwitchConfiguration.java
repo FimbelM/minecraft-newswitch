@@ -5,9 +5,9 @@ import java.util.StringJoiner;
 
 import fr.martinfimbel.Minecraft_NewSwitch.impl.Switch;
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitchConfiguration;
+import fr.pederobien.minecraftborder.impl.AbstractGameBorderConfiguration;
+import fr.pederobien.minecraftborder.impl.BorderConfiguration;
 import fr.pederobien.minecraftdevelopmenttoolkit.utils.DisplayHelper;
-import fr.pederobien.minecraftgameplateform.border.BorderConfiguration;
-import fr.pederobien.minecraftgameplateform.impl.element.AbstractGameBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.impl.element.PlateformTeam;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IGame;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;

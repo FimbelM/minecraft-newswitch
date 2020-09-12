@@ -2,7 +2,7 @@ package fr.martinfimbel.Minecraft_NewSwitch.persistence.loaders;
 
 import fr.martinfimbel.Minecraft_NewSwitch.SwitchConfiguration;
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitchConfiguration;
-import fr.pederobien.minecraftgameplateform.border.IBorderConfiguration;
+import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
 import fr.pederobien.persistence.impl.xml.AbstractXmlPersistenceLoader;
 import fr.pederobien.persistence.interfaces.IPersistence;
 

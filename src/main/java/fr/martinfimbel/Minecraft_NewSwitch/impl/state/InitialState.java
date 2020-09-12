@@ -3,14 +3,14 @@ package fr.martinfimbel.Minecraft_NewSwitch.impl.state;
 import java.time.LocalTime;
 
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitch;
-import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.ITimeLineObserver;
+import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.IObsTimeLine;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecraftmanagers.PlayerManager;
 import fr.pederobien.minecraftmanagers.ScoreboardManager;
 import fr.pederobien.minecraftmanagers.WorldManager;
 
 public class InitialState extends AbstractState {
-	private ITimeLineObserver teamObjective;
+	private IObsTimeLine teamObjective;
 
 	public InitialState(ISwitch game) {
 		super(game);
@@ -31,7 +31,7 @@ public class InitialState extends AbstractState {
 		getGame().setCurrentState(getGame().getStartState()).start();
 	}
 
-	private class TeamObjective implements ITimeLineObserver {
+	private class TeamObjective implements IObsTimeLine {
 
 		@Override
 		public void timeChanged(LocalTime time) {
