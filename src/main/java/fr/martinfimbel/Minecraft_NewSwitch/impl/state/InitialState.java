@@ -34,8 +34,28 @@ public class InitialState extends AbstractState {
 	private class TeamObjective implements IObsTimeLine {
 
 		@Override
-		public void timeChanged(LocalTime time) {
+		public int getCountDown() {
+			return 0;
+		}
+
+		@Override
+		public int getCurrentCountDown() {
+			return 0;
+		}
+
+		@Override
+		public void onTime(LocalTime time) {
 			getGame().getObjectives().forEach(obj -> obj.addTeams());
+		}
+
+		@Override
+		public void onCountDownTime(LocalTime currentTime) {
+
+		}
+
+		@Override
+		public LocalTime getNextNotifiedTime() {
+			return LocalTime.of(0, 0, 0);
 		}
 	}
 }
