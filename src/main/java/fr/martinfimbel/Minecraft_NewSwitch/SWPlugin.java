@@ -21,10 +21,10 @@ public class SWPlugin extends JavaPlugin {
 
 	private void registerDictionaries() {
 		// Registering French dictionaries
-		registerDictionary("French", "HungerGame.xml");
+		registerDictionary("French", "Switch.xml");
 
 		// Registering English dictionaries
-		registerDictionary("English", "HungerGame.xml");
+		registerDictionary("English", "Switch.xml");
 	}
 
 	private void registerDictionary(String parent, String... dictionaryNames) {
