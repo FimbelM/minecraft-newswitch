@@ -130,27 +130,27 @@
 		</message>
 		<message>
 			<code>NUMBER_OF_SWITCHABLE_PLAYER_PER_TEAM_EXPLANATION</code>
-			<value>Pour choisir le nombre de joueur switché(s) par équipe</value> 
+			<value>Pour choisir le nombre de joueur échangé(s) par équipe</value> 
 		</message>
 		<message>
 			<code>NUMBER_OF_SWITCHED_PLAYERS_INFERIOR_AT_ONE</code>
-			<value>Le nombre de joueur(s) switché(s) par équipe doit être supérieur ou égal à un</value> 
+			<value>Le nombre de joueur(s) échangé(s) par équipe doit être supérieur ou égal à un</value> 
 		</message>
 		<message>
 			<code>NUMBER_OF_SWITCHABLE_PLAYER_PER_TEAM_DEFINED</code>
-			<value>Le nombre de joueur(s) switché(s) par équipe a été défini à %s</value> 
+			<value>Le nombre de joueur(s) échangé(s) par équipe a été défini à %s</value> 
 		</message>
 		<message>
 			<code>NUMBER_OF_SWITCHABLE_PLAYER_PER_TEAM_MISSING_NUMBER</code>
-			<value>Le nombre de joueur(s) switché(s) par équipe n'a pas été défini</value> 
+			<value>Le nombre de joueur(s) échangé(s) par équipe n'a pas été défini</value> 
 		</message>
 		<message>
 			<code>NUMBER_OF_SWITCHABLE_PLAYER_PER_TEAM_BAD_FORMAT</code>
-			<value>Le Le nombre de joueur(s) switché(s) par équipe doit être un entier</value> 
+			<value>Le nombre de joueur(s) échangé(s) par équipe doit être un entier</value> 
 		</message>
 		<message>
 			<code>NUMBER_OF_SWITCHABLE_PLAYER_ON_TAB_COMPLETE</code>
-			<value>nombreDeJoueurEchangeable</value> 
+			<value>1, 2, 3, ...</value> 
 		</message>
 		<message>
 			<code>SWITCH_AFTER_BORDER_MOVES_EXPLANATION</code>
@@ -161,12 +161,12 @@
 			<value>L'activation du switch après que la bordure soit en mouvement est définie sur %s</value> 
 		</message>
 		<message>
-			<code>SWITCH_AFTER_BORDER_MOVES_WRONG_FORMAT</code>
-			<value>La commande d'activation du switch après que la bordure soit en mouvement doit être une lettre</value> 
+			<code>SWITCH_AFTER_BORDER_MOVES_VALUE_IS_MISSING</code>
+			<value>L'activation du switch après que la bordure soit en mouvement n'a pas été définie, il manque une valeur</value> 
 		</message>		
 		<message>
 			<code>SWITCH_AFTER_BORDER_MOVES_TAB_COMPLETE</code>
-			<value>y, Y, n or N</value> 
+			<value>true/false</value> 
 		</message>
 		<message>
 			<code>ONE_PLAYER_SWITCH_EXPLANATION</code>
@@ -174,15 +174,15 @@
 		</message>
 		<message>
 			<code>ONE_PLAYER_SWITCH_DEFINED</code>
-			<value>Le switch d'un joueur solo est défini sur %s</value> 
+			<value>Le switch d'un joueur seul est défini sur %s</value> 
 		</message>		
 		<message>
-			<code>ONE_PLAYER_SWITCH_WRONG_FORMAT</code>
-			<value>La commande du switch d'un joueur doit être une lettre</value> 
+			<code>ONE_PLAYER_SWITCH_IS_MISSING</code>
+			<value>La commande d'activation du switch d'un joueur seul n'a pas été définie car il manque la valeur</value> 
 		</message>		
 		<message>
 			<code>ONE_PLAYER_SWITCH_TAB_COMPLETE</code>
-			<value>y, Y, n or N</value> 
+			<value>true/false</value> 
 		</message>
 		<message>
 			<code>START_SWITCH_TIME_EXPLANATION</code>
@@ -194,7 +194,7 @@
 		</message>
 		<message>
 			<code>SWITCH_TIME_MISSING_TIME</code>
-			<value>Le temps du premier échange n'a pas été défini</value> 
+			<value>Le temps des échanges n'a pas été défini, il manque la valeur</value> 
 		</message>		
 		<message>
 			<code>BAD_TIME_FORMAT</code>
@@ -212,5 +212,22 @@
 			<code>SWITCH_TIME_DEFINED</code>
 			<value>La période de temps entre deux échange est défini à %s</value> 
 		</message>
+		<message>
+			<code>RANDOM_SWITCH_EXPLANATION</code>
+			<value>Défini si les temps et le nombre d'échanges vont être réguliers ou périodiques</value> 
+		</message>
+		<message>
+			<code>RANDOM_SWITCH_DEFINED</code>
+			<value>Les échanges au hasard ont été défini à : %s</value> 
+		</message>
+		<message>
+			<code>RANDOM_SWITCH_VALUE_IS_MISSING</code>
+			<value>La échanges au hasard n'ont pas pu être défini car il manque la valeur</value> 
+		</message>
+		<message>
+			<code>RANDOM_SWITCH_TAB_COMPLETE</code>
+			<value>true/false</value> 
+		</message>
+		
 	</messages>
 </dictionary>

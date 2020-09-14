@@ -195,7 +195,7 @@
 		</message>
 		<message>
 			<code>SWITCH_TIME_MISSING_TIME</code>
-			<value>Start switch time hasn't been defined, value is missing</value> 
+			<value> Start or periodic switch time hasn't been defined, value is missing</value> 
 		</message>		
 		<message>
 			<code>BAD_TIME_FORMAT</code>
