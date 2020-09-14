@@ -1,6 +1,5 @@
 package fr.martinfimbel.Minecraft_NewSwitch.command;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.command.Command;
@@ -39,7 +38,7 @@ public class OnePlayerSwitch extends AbstractLabelEdition<ISwitchConfiguration> 
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		if (args.length == 1)
-			return Arrays.asList(getMessageFromDictionary(sender, ESwitchMessageCode.ONE_PLAYER_SWITCH_TAB_COMPLETE));
+			return asList("true", "false");
 		return emptyList();
 	}
 }
