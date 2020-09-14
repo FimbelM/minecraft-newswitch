@@ -13,11 +13,17 @@ public class SwitchParent extends AbstractGameBorderConfigurationParent<ISwitchC
 	public SwitchParent(Plugin plugin) {
 		super("sw", ESwitchMessageCode.SW_EXPLANATION, plugin, SwitchPersistence.getInstance());
 		addEdition(SwitchEditionFactory.playerDontReviveTime());
+		addEdition(SwitchEditionFactory.numberOfSwitchablePlayer());
+		addEdition(SwitchEditionFactory.onePlayerSwitch());
+		addEdition(SwitchEditionFactory.randomSwitch());
+		addEdition(SwitchEditionFactory.startSwitchTime());
+		addEdition(SwitchEditionFactory.switchAfterBorderMoves());
+		addEdition(SwitchEditionFactory.periodicSwitchTime());
 	}
 
 	@Override
 	protected IMapPersistenceEdition<ISwitchConfiguration> getNewEdition() {
-		return SwitchEditionFactory.newSwitch().setModifiable(false);
+		return SwitchEditionFactory.newSwitch();
 	}
 
 	@Override
@@ -32,12 +38,12 @@ public class SwitchParent extends AbstractGameBorderConfigurationParent<ISwitchC
 
 	@Override
 	protected IMapPersistenceEdition<ISwitchConfiguration> getListEdition() {
-		return SwitchEditionFactory.listSwitch().setModifiable(false);
+		return SwitchEditionFactory.listSwitch();
 	}
 
 	@Override
 	protected IMapPersistenceEdition<ISwitchConfiguration> getDeleteEdition() {
-		return SwitchEditionFactory.deleteSwitch().setModifiable(false);
+		return SwitchEditionFactory.deleteSwitch();
 	}
 
 	@Override
@@ -47,6 +53,6 @@ public class SwitchParent extends AbstractGameBorderConfigurationParent<ISwitchC
 
 	@Override
 	protected IMapPersistenceEdition<ISwitchConfiguration> getLoadEdition() {
-		return SwitchEditionFactory.loadSwitch().setModifiable(false);
+		return SwitchEditionFactory.loadSwitch();
 	}
 }
