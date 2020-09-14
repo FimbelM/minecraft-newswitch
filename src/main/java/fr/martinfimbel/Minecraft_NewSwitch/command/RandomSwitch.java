@@ -21,11 +21,13 @@ public class RandomSwitch extends AbstractLabelEdition<ISwitchConfiguration> {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		try {
 			String value = args[0];
-			if (value.equals("true"))
+			if (value.equals("true")) {
 				get().setRandomSwitch(true);
-			else if (value.equals("false"))
+				disableSwitchTimeCommands();
+			} else if (value.equals("false")) {
 				get().setRandomSwitch(false);
-			else {
+				enableSwitchTimeCommands();
+			} else {
 				sendMessageToSender(sender, ECommonMessageCode.COMMON_BAD_BOOLEAN_FORMAT);
 				return false;
 			}
@@ -35,6 +37,16 @@ public class RandomSwitch extends AbstractLabelEdition<ISwitchConfiguration> {
 			return false;
 		}
 		return true;
+	}
+
+	private void enableSwitchTimeCommands() {
+		setAvailableLabelEdition(ESwitchLabel.START_SWITCH_TIME);
+		setAvailableLabelEdition(ESwitchLabel.SWITCH_TIME);
+	}
+
+	private void disableSwitchTimeCommands() {
+		setNotAvailableLabelEdition(ESwitchLabel.START_SWITCH_TIME);
+		setNotAvailableLabelEdition(ESwitchLabel.SWITCH_TIME);
 	}
 
 	@Override
