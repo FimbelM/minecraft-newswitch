@@ -25,84 +25,84 @@ public interface ISwitchConfiguration extends IGameBorderConfiguration {
 	/**
 	 * Define the number of player(s) switched between teams throughout the duration of the game.
 	 * 
-	 * @param parseInt The number you choose.
+	 * @param numberOfPlayerSwitchable The number you choose.
 	 */
-	void setNumberOfPlayerSwitchable(int parseInt);
+	void setNumberOfPlayerSwitchable(int numberOfPlayerSwitchable);
 
 	/**
 	 * Define the number of player(s) switched between teams throughout the duration of the game.
 	 * 
 	 * @return The chosen number
 	 */
-	String getNumberOfPlayerSwitchable();
+	Integer getNumberOfPlayerSwitchable();
 
 	/**
 	 * Define if the switch is enabled or not when the borders are moving
 	 * 
-	 * @param letter
+	 * @param activatedSwitchAfterBorderMoves true or false
 	 */
-	void setSwitchAfterBorderMoves(String letter);
+	void setSwitchAfterBorderMovesActivated(boolean SwitchAfterBorderMovesActivated);
 
 	/**
 	 * Define if the switch is enabled or not when the borders are moving
 	 * 
-	 * @return if switch is enabled or not
+	 * @return if switch after border moves is enabled or not
 	 */
-	Object getSwitchAfterBorderMoves();
+	boolean isSwitchAfterBorderMovesActivated();
 
 	/**
 	 * Define if the switch is activated even if it remains only one player in a team
 	 * 
-	 * @param letter (y,Y,n or N)
+	 * @param switchIfAlone True or false
 	 */
-	void setOnePlayerSwitch(String letter);
+	void setOnePlayerSwitch(boolean switchIfAlone);
 
 	/**
 	 * Reads if the switch is activated even if it remains only one player in a team
 	 * 
-	 * @return letter (y,Y,n or N)
+	 * @return if switch if player alone in a team is enabled or not
 	 */
-	Object getOnePlayerSwitch();
+	boolean isOnePlayerSwitchActivated();
 
 	/**
 	 * Define the time at which first switch occurs
 	 * 
-	 * @param parse hh:mm:ss
+	 * @param startSwitchTime hh:mm:ss
 	 */
-	void setStartSwitchTime(LocalTime parse);
+	void setStartSwitchTime(LocalTime startSwitchTime);
 
 	/**
 	 * Reads the time at which first switch occurs
 	 * 
-	 * @return hh:mm:ss
+	 * @return startSwitchTime the time at which first switch occurs
 	 */
 	LocalTime getStartSwitchTime();
 
 	/**
 	 * Define the time at which every switch following the first one will occur periodically
 	 * 
-	 * @param parse Time hh:mm:ss
+	 * @param switchTime hh:mm:ss
 	 */
-	void setPeriodSwitchTime(LocalTime parse);
+	void setPeriodSwitchTime(LocalTime switchTime);
 
 	/**
 	 * Reads the time at which every switch following the first one will occur periodically
 	 * 
-	 * @return parse hh:mm:ss
+	 * @return switchTime hh:mm:ss
 	 */
 	LocalTime getPeriodSwitchTime();
 
 	/**
 	 * Define if switch are going to be periodic or randomly placed
 	 * 
-	 * @param letter Y, y, N or n
+	 * @param randomSwitch true or false
 	 */
-	void setRandomSwitch(String letter);
+	void setRandomSwitch(boolean randomSwitch);
 
 	/**
 	 * Define if switch are going to be periodic or randomly placed
 	 * 
-	 * @param letter Y, y, N or n
+	 * @return if switch is going to be periodic or random
 	 */
-	Object getRandomSwitch();
+	boolean isRandomSwitchActivated();
 }

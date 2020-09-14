@@ -16,9 +16,17 @@ import fr.pederobien.minecraftmanagers.WorldManager;
 
 public class SwitchConfiguration extends AbstractGameBorderConfiguration implements ISwitchConfiguration {
 	private static final LocalTime DEFAULT_PLAYER_DONT_REVIVE_TIME = LocalTime.of(0, 0, 0);
+	private static final Integer DEFAULT_NUMBER_OF_PLAYER_SWITCHABLE = 1;
+	private static final LocalTime DEFAULT_START_SWITCH_TIME = LocalTime.of(0, 20, 0);
+	private static final LocalTime DEFAULT_PERIODIC_SWITCH_TIME = LocalTime.of(0, 20, 0);
+	private static final Boolean DEFAULT_SWITCH_AFTER_BORDER_MOVES = false;
+	private static final Boolean DEFAULT_RANDOM_SWITCH = false;
+	private static final Boolean DEFAULT_ONE_PLAYER_SWITCH = false;
 
 	private IGame game;
-	private LocalTime playerDontReviveTime;
+	private LocalTime playerDontReviveTime, startSwitchTime, periodicSwitchTime;
+	private Integer numberOfPlayerSwitchable;
+	private Boolean isSwitchAfterBorderMoves, isRandomSwitch, isOnePlayerSwitch;
 
 	public SwitchConfiguration(String name) {
 		super(name);
@@ -67,73 +75,62 @@ public class SwitchConfiguration extends AbstractGameBorderConfiguration impleme
 
 	@Override
 	public void setNumberOfPlayerSwitchable(int parseInt) {
-		// TODO Auto-generated method stub
-
+		this.numberOfPlayerSwitchable = parseInt;
 	}
 
 	@Override
-	public String getNumberOfPlayerSwitchable() {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer getNumberOfPlayerSwitchable() {
+		return numberOfPlayerSwitchable == null ? DEFAULT_NUMBER_OF_PLAYER_SWITCHABLE : numberOfPlayerSwitchable;
 	}
 
 	@Override
-	public void setSwitchAfterBorderMoves(String letter) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public Object getSwitchAfterBorderMoves() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setOnePlayerSwitch(String letter) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public Object getOnePlayerSwitch() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setStartSwitchTime(LocalTime parse) {
-		// TODO Auto-generated method stub
-
+	public void setStartSwitchTime(LocalTime startSwitchTime) {
+		this.startSwitchTime = startSwitchTime;
 	}
 
 	@Override
 	public LocalTime getStartSwitchTime() {
-		// TODO Auto-generated method stub
-		return null;
+		return startSwitchTime == null ? DEFAULT_START_SWITCH_TIME : startSwitchTime;
 	}
 
 	@Override
-	public void setPeriodSwitchTime(LocalTime parse) {
-		// TODO Auto-generated method stub
-
+	public void setPeriodSwitchTime(LocalTime switchTime) {
+		this.periodicSwitchTime = switchTime;
 	}
 
 	@Override
 	public LocalTime getPeriodSwitchTime() {
-		// TODO Auto-generated method stub
-		return null;
+		return periodicSwitchTime == null ? DEFAULT_PERIODIC_SWITCH_TIME : periodicSwitchTime;
 	}
 
 	@Override
-	public void setRandomSwitch(String letter) {
-		// TODO Auto-generated method stub
-
+	public void setRandomSwitch(boolean randomSwitch) {
+		this.isRandomSwitch = randomSwitch;
 	}
 
 	@Override
-	public Object getRandomSwitch() {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean isRandomSwitchActivated() {
+		return isRandomSwitch == null ? DEFAULT_RANDOM_SWITCH : isRandomSwitch;
 	}
+
+	@Override
+	public void setSwitchAfterBorderMovesActivated(boolean SwitchAfterBorderMovesActivated) {
+		this.isSwitchAfterBorderMoves = SwitchAfterBorderMovesActivated;
+	}
+
+	@Override
+	public boolean isSwitchAfterBorderMovesActivated() {
+		return isSwitchAfterBorderMoves == null ? DEFAULT_SWITCH_AFTER_BORDER_MOVES : isSwitchAfterBorderMoves;
+	}
+
+	@Override
+	public void setOnePlayerSwitch(boolean switchIfAlone) {
+		this.isOnePlayerSwitch = switchIfAlone;
+	}
+
+	@Override
+	public boolean isOnePlayerSwitchActivated() {
+		return isOnePlayerSwitch == null ? DEFAULT_ONE_PLAYER_SWITCH : isOnePlayerSwitch;
+	}
+
 }
