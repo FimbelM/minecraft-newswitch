@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 
 import fr.martinfimbel.Minecraft_NewSwitch.ESwitchMessageCode;
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitchConfiguration;
+import fr.pederobien.minecraftgameplateform.dictionary.ECommonMessageCode;
 import fr.pederobien.minecraftgameplateform.impl.editions.AbstractLabelEdition;
 
 public class SwitchAfterBorderMoves extends AbstractLabelEdition<ISwitchConfiguration> {
@@ -18,19 +19,22 @@ public class SwitchAfterBorderMoves extends AbstractLabelEdition<ISwitchConfigur
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		String letter = args[0];
-		if (letter.equalsIgnoreCase("Y")) {
-			get().setSwitchAfterBorderMoves(letter);
-			sendMessageToSender(sender, ESwitchMessageCode.SWITCH_AFTER_BORDER_MOVES_DEFINED, get().getSwitchAfterBorderMoves());
-			return true;
-		} else if (letter.equalsIgnoreCase("N")) {
-			get().setSwitchAfterBorderMoves(letter);
-			sendMessageToSender(sender, ESwitchMessageCode.SWITCH_AFTER_BORDER_MOVES_DEFINED, get().getSwitchAfterBorderMoves());
-			return true;
-		} else {
-			sendMessageToSender(sender, ESwitchMessageCode.SWITCH_AFTER_BORDER_MOVES_WRONG_FORMAT);
-			return true;
+		try {
+			String value = args[0];
+			if (value.equals("true"))
+				get().setSwitchAfterBorderMovesActivated(true);
+			else if (value.equals("false"))
+				get().setSwitchAfterBorderMovesActivated(false);
+			else {
+				sendMessageToSender(sender, ECommonMessageCode.COMMON_BAD_BOOLEAN_FORMAT);
+				return false;
+			}
+			sendMessageToSender(sender, ESwitchMessageCode.SWITCH_AFTER_BORDER_MOVES_DEFINED, get().isSwitchAfterBorderMovesActivated());
+		} catch (IndexOutOfBoundsException e) {
+			sendMessageToSender(sender, ESwitchMessageCode.SWITCH_AFTER_BORDER_MOVES_VALUE_IS_MISSING);
+			return false;
 		}
+		return true;
 	}
 
 	@Override

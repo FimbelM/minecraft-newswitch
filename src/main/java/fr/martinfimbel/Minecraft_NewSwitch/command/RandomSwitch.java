@@ -1,34 +1,46 @@
 package fr.martinfimbel.Minecraft_NewSwitch.command;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import fr.martinfimbel.Minecraft_NewSwitch.ESwitchMessageCode;
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitchConfiguration;
-import fr.pederobien.minecraftdictionary.interfaces.IMinecraftMessageCode;
+import fr.pederobien.minecraftgameplateform.dictionary.ECommonMessageCode;
 import fr.pederobien.minecraftgameplateform.impl.editions.AbstractLabelEdition;
-import fr.pederobien.minecraftgameplateform.interfaces.element.ILabel;
 
 public class RandomSwitch extends AbstractLabelEdition<ISwitchConfiguration> {
 
-	protected RandomSwitch(ILabel label, IMinecraftMessageCode explanation) {
+	protected RandomSwitch() {
 		super(ESwitchLabel.RANDOM_SWITCH, ESwitchMessageCode.RANDOM_SWITCH_EXPLANATION);
 	}
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		String letter = args[0];
-		if (letter.equalsIgnoreCase("Y")) {
-			get().setRandomSwitch(letter);
-			sendMessageToSender(sender, ESwitchMessageCode.RANDOM_SWITCH_DEFINED, get().getRandomSwitch());
-			return true;
-		} else if (letter.equalsIgnoreCase("N")) {
-			get().setRandomSwitch(letter);
-			sendMessageToSender(sender, ESwitchMessageCode.RANDOM_SWITCH_DEFINED, get().getRandomSwitch());
-			return true;
+		try {
+			String value = args[0];
+			if (value.equals("true"))
+				get().setRandomSwitch(true);
+			else if (value.equals("false"))
+				get().setRandomSwitch(false);
+			else {
+				sendMessageToSender(sender, ECommonMessageCode.COMMON_BAD_BOOLEAN_FORMAT);
+				return false;
+			}
+			sendMessageToSender(sender, ESwitchMessageCode.RANDOM_SWITCH_DEFINED, get().isRandomSwitchActivated());
+		} catch (IndexOutOfBoundsException e) {
+			sendMessageToSender(sender, ESwitchMessageCode.RANDOM_SWITCH_VALUE_IS_MISSING);
+			return false;
 		}
-		sendMessageToSender(sender, ESwitchMessageCode.RANDOM_SWITCH_WRONG_FORMAT);
-		return false;
+		return true;
 	}
 
+	@Override
+	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+		if (args.length == 1)
+			return Arrays.asList(getMessageFromDictionary(sender, ESwitchMessageCode.RANDOM_SWITCH_TAB_COMPLETE));
+		return emptyList();
+	}
 }

@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 
 import fr.martinfimbel.Minecraft_NewSwitch.ESwitchMessageCode;
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitchConfiguration;
+import fr.pederobien.minecraftgameplateform.dictionary.ECommonMessageCode;
 import fr.pederobien.minecraftgameplateform.impl.editions.AbstractLabelEdition;
 
 public class OnePlayerSwitch extends AbstractLabelEdition<ISwitchConfiguration> {
@@ -17,19 +18,22 @@ public class OnePlayerSwitch extends AbstractLabelEdition<ISwitchConfiguration> 
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		String letter = args[0];
-		if (letter.equalsIgnoreCase("Y")) {
-			get().setOnePlayerSwitch(letter);
-			sendMessageToSender(sender, ESwitchMessageCode.ONE_PLAYER_SWITCH_DEFINED, get().getOnePlayerSwitch());
-			return true;
-		} else if (letter.equalsIgnoreCase("N")) {
-			get().setOnePlayerSwitch(letter);
-			sendMessageToSender(sender, ESwitchMessageCode.ONE_PLAYER_SWITCH_DEFINED, get().getOnePlayerSwitch());
-			return true;
-		} else {
-			sendMessageToSender(sender, ESwitchMessageCode.ONE_PLAYER_SWITCH_WRONG_FORMAT);
-			return true;
+		try {
+			String value = args[0];
+			if (value.equals("true"))
+				get().setOnePlayerSwitch(true);
+			else if (value.equals("false"))
+				get().setOnePlayerSwitch(false);
+			else {
+				sendMessageToSender(sender, ECommonMessageCode.COMMON_BAD_BOOLEAN_FORMAT);
+				return false;
+			}
+			sendMessageToSender(sender, ESwitchMessageCode.ONE_PLAYER_SWITCH_DEFINED, get().isOnePlayerSwitchActivated());
+		} catch (IndexOutOfBoundsException e) {
+			sendMessageToSender(sender, ESwitchMessageCode.ONE_PLAYER_SWITCH_VALUE_IS_MISSING);
+			return false;
 		}
+		return true;
 	}
 
 	@Override
