@@ -36,7 +36,7 @@ public class StartSwitchTime extends AbstractLabelEdition<ISwitchConfiguration> 
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		if (args.length == 1)
-			return Arrays.asList(getMessageFromDictionary(sender, ESwitchMessageCode.START_SWITCH_TIME_TAB_COMPLETE));
+			return Arrays.asList(getMessageFromDictionary(sender, ESwitchMessageCode.SWITCH_TIME_TAB_COMPLETE));
 		return emptyList();
 	}
 
