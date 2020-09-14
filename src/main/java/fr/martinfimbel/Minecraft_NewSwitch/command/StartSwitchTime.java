@@ -11,6 +11,7 @@ import org.bukkit.command.CommandSender;
 import fr.martinfimbel.Minecraft_NewSwitch.ESwitchMessageCode;
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitchConfiguration;
 import fr.pederobien.minecraftdevelopmenttoolkit.utils.DisplayHelper;
+import fr.pederobien.minecraftgameplateform.dictionary.ECommonMessageCode;
 import fr.pederobien.minecraftgameplateform.impl.editions.AbstractLabelEdition;
 
 public class StartSwitchTime extends AbstractLabelEdition<ISwitchConfiguration> {
@@ -28,7 +29,7 @@ public class StartSwitchTime extends AbstractLabelEdition<ISwitchConfiguration> 
 		} catch (IndexOutOfBoundsException e) {
 			sendMessageToSender(sender, ESwitchMessageCode.SWITCH_TIME_MISSING_TIME);
 		} catch (DateTimeParseException e) {
-			sendMessageToSender(sender, ESwitchMessageCode.BAD_TIME_FORMAT);
+			sendMessageToSender(sender, ECommonMessageCode.COMMON_BAD_TIME_FORMAT);
 		}
 		return false;
 	}

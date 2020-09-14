@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 
 import fr.martinfimbel.Minecraft_NewSwitch.ESwitchMessageCode;
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitchConfiguration;
+import fr.pederobien.minecraftgameplateform.dictionary.ECommonMessageCode;
 import fr.pederobien.minecraftgameplateform.impl.editions.AbstractLabelEdition;
 
 public class NumberOfSwitchablePlayer extends AbstractLabelEdition<ISwitchConfiguration> {
@@ -30,7 +31,7 @@ public class NumberOfSwitchablePlayer extends AbstractLabelEdition<ISwitchConfig
 		} catch (IndexOutOfBoundsException e) {
 			sendMessageToSender(sender, ESwitchMessageCode.NUMBER_OF_SWITCHABLE_PLAYER_PER_TEAM_MISSING_NUMBER);
 		} catch (NumberFormatException e) {
-			sendMessageToSender(sender, ESwitchMessageCode.NUMBER_OF_SWITCHABLE_PLAYER_PER_TEAM_BAD_FORMAT);
+			sendMessageToSender(sender, ECommonMessageCode.COMMON_BAD_INTEGER_FORMAT);
 		}
 		return false;
 	}
