@@ -70,6 +70,12 @@ public class SwitchConfiguration extends AbstractGameBorderConfiguration impleme
 		}
 		joiner.add("Player don't revive time : " + display(playerDontReviveTime, DisplayHelper.toString(getPlayerDontReviveTime(), true)));
 		joiner.add("Pvp time : " + DisplayHelper.toString(getPvpTime(), true));
+		joiner.add("Start switch time : " + display(startSwitchTime, DisplayHelper.toString(getStartSwitchTime(), true)));
+		joiner.add("Periodic switch time : " + display(periodicSwitchTime, DisplayHelper.toString(getPeriodSwitchTime(), true)));
+		joiner.add("Number of Switchable player : " + display(numberOfPlayerSwitchable, "" + getNumberOfPlayerSwitchable()));
+		joiner.add("One player switch : " + display(isOnePlayerSwitch, "" + isOnePlayerSwitchActivated()));
+		joiner.add("Switch after border moves : " + display(isSwitchAfterBorderMoves, "" + isSwitchAfterBorderMovesActivated()));
+		joiner.add("Random switch : " + display(isRandomSwitch, "" + isRandomSwitchActivated()));
 		return joiner.toString();
 	}
 
