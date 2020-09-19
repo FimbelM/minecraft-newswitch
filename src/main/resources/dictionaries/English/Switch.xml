@@ -229,6 +229,22 @@
 			<code>RANDOM_SWITCH_TAB_COMPLETE</code>
 			<value>true/false</value> 
 		</message>
+		<message>
+			<code>NO_REVIVE_IN</code>
+			<value>No revive in %s</value> 
+		</message>
+		<message>
+			<code>ENTRY_PVP_DISABLED</code>
+			<value>PVP enabled in : </value> 
+		</message>
+		<message>
+			<code>ENTRY_PVP_ENABLED</code>
+			<value>PVP enabled</value> 
+		</message>
+		<message>
+			<code>ENTRY_TIME_BEFORE_SWITCH</code>
+			<value>Next switch in : </value> 
+		</message>
 
 	</messages>
 </dictionary>

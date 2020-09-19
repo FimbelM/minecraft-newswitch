@@ -210,7 +210,7 @@
 		</message>
 		<message>
 			<code>SWITCH_TIME_DEFINED</code>
-			<value>La période de temps entre deux échange est défini à %s</value> 
+			<value>La période de temps entre deux échanges est défini à %s</value> 
 		</message>
 		<message>
 			<code>RANDOM_SWITCH_EXPLANATION</code>
@@ -222,12 +222,27 @@
 		</message>
 		<message>
 			<code>RANDOM_SWITCH_VALUE_IS_MISSING</code>
-			<value>La échanges au hasard n'ont pas pu être défini car il manque la valeur</value> 
+			<value>L'activation des échanges au hasard n'a pas pu être définie car il manque la valeur</value> 
 		</message>
 		<message>
 			<code>RANDOM_SWITCH_TAB_COMPLETE</code>
 			<value>true/false</value> 
 		</message>
-		
+		<message>
+			<code>NO_REVIVE_IN</code>
+			<value>Plus de résurrection dans %s</value> 
+		</message>
+				<message>
+			<code>ENTRY_PVP_DISABLED</code>
+			<value>PVP activé dans : </value> 
+		</message>
+		<message>
+			<code>ENTRY_PVP_ENABLED</code>
+			<value>PVP activé</value> 
+		</message>
+		<message>
+			<code>ENTRY_TIME_BEFORE_SWITCH</code>
+			<value>Prochain échange dans : </value> 
+		</message>
 	</messages>
 </dictionary>
