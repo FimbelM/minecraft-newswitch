@@ -11,7 +11,7 @@ import fr.martinfimbel.Minecraft_NewSwitch.persistence.SwitchXmlTag;
 import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.impl.element.PlateformTeam;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
-import fr.pederobien.minecraftgameplateform.utils.EColor;
+import fr.pederobien.minecraftmanagers.EColor;
 import fr.pederobien.persistence.interfaces.IPersistence;
 import fr.pederobien.persistence.interfaces.xml.IXmlPersistenceLoader;
 

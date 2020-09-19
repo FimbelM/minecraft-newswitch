@@ -25,12 +25,12 @@ public class SwitchAfterBorderMoves extends AbstractLabelEdition<ISwitchConfigur
 			else if (value.equals("false"))
 				get().setSwitchAfterBorderMovesActivated(false);
 			else {
-				sendMessageToSender(sender, ECommonMessageCode.COMMON_BAD_BOOLEAN_FORMAT);
+				sendSynchro(sender, ECommonMessageCode.COMMON_BAD_BOOLEAN_FORMAT);
 				return false;
 			}
-			sendMessageToSender(sender, ESwitchMessageCode.SWITCH_AFTER_BORDER_MOVES_DEFINED, get().isSwitchAfterBorderMovesActivated());
+			sendSynchro(sender, ESwitchMessageCode.SWITCH_AFTER_BORDER_MOVES_DEFINED, get().isSwitchAfterBorderMovesActivated());
 		} catch (IndexOutOfBoundsException e) {
-			sendMessageToSender(sender, ESwitchMessageCode.SWITCH_AFTER_BORDER_MOVES_VALUE_IS_MISSING);
+			sendSynchro(sender, ESwitchMessageCode.SWITCH_AFTER_BORDER_MOVES_VALUE_IS_MISSING);
 			return false;
 		}
 		return true;

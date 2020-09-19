@@ -27,12 +27,12 @@ public class RandomSwitch extends AbstractLabelEdition<ISwitchConfiguration> {
 				get().setRandomSwitch(false);
 				enableSwitchTimeCommands();
 			} else {
-				sendMessageToSender(sender, ECommonMessageCode.COMMON_BAD_BOOLEAN_FORMAT);
+				sendSynchro(sender, ECommonMessageCode.COMMON_BAD_BOOLEAN_FORMAT);
 				return false;
 			}
-			sendMessageToSender(sender, ESwitchMessageCode.RANDOM_SWITCH_DEFINED, get().isRandomSwitchActivated());
+			sendSynchro(sender, ESwitchMessageCode.RANDOM_SWITCH_DEFINED, get().isRandomSwitchActivated());
 		} catch (IndexOutOfBoundsException e) {
-			sendMessageToSender(sender, ESwitchMessageCode.RANDOM_SWITCH_VALUE_IS_MISSING);
+			sendSynchro(sender, ESwitchMessageCode.RANDOM_SWITCH_VALUE_IS_MISSING);
 			return false;
 		}
 		return true;

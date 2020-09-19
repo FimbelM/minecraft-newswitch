@@ -18,12 +18,12 @@ public class NewSwitch extends CommonNew<ISwitchConfiguration> {
 
 	@Override
 	protected void onNameAlreadyTaken(CommandSender sender, String name) {
-		sendMessageToSender(sender, ESwitchMessageCode.NEW_SW__NAME_ALREADY_TAKEN, name);
+		sendSynchro(sender, ESwitchMessageCode.NEW_SW__NAME_ALREADY_TAKEN, name);
 	}
 
 	@Override
 	protected void onNameIsMissing(CommandSender sender) {
-		sendMessageToSender(sender, ESwitchMessageCode.NEW_SW__NAME_IS_MISSING);
+		sendSynchro(sender, ESwitchMessageCode.NEW_SW__NAME_IS_MISSING);
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class NewSwitch extends CommonNew<ISwitchConfiguration> {
 
 	@Override
 	protected void onCreated(CommandSender sender, String name) {
-		sendMessageToSender(sender, ESwitchMessageCode.NEW_SW__CONFIGURATION_CREATED, name);
+		sendSynchro(sender, ESwitchMessageCode.NEW_SW__CONFIGURATION_CREATED, name);
 		setAllAvailable();
 	}
 

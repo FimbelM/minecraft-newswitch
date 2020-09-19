@@ -78,7 +78,7 @@ public class SwitchPersistence extends AbstractMinecraftPersistence<ISwitchConfi
 		for (ITeam t : get().getTeams()) {
 			Element team = createElement(doc, SwitchXmlTag.TEAM);
 			setAttribute(team, SwitchXmlTag.NAME, t.getName());
-			setAttribute(team, SwitchXmlTag.COLOR, t.getColor().getName());
+			setAttribute(team, SwitchXmlTag.COLOR, t.getColor().toString());
 			teams.appendChild(team);
 		}
 		root.appendChild(teams);

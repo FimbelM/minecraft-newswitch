@@ -24,12 +24,12 @@ public class OnePlayerSwitch extends AbstractLabelEdition<ISwitchConfiguration> 
 			else if (value.equals("false"))
 				get().setOnePlayerSwitch(false);
 			else {
-				sendMessageToSender(sender, ECommonMessageCode.COMMON_BAD_BOOLEAN_FORMAT);
+				sendSynchro(sender, ECommonMessageCode.COMMON_BAD_BOOLEAN_FORMAT);
 				return false;
 			}
-			sendMessageToSender(sender, ESwitchMessageCode.ONE_PLAYER_SWITCH_DEFINED, get().isOnePlayerSwitchActivated());
+			sendSynchro(sender, ESwitchMessageCode.ONE_PLAYER_SWITCH_DEFINED, get().isOnePlayerSwitchActivated());
 		} catch (IndexOutOfBoundsException e) {
-			sendMessageToSender(sender, ESwitchMessageCode.ONE_PLAYER_SWITCH_VALUE_IS_MISSING);
+			sendSynchro(sender, ESwitchMessageCode.ONE_PLAYER_SWITCH_VALUE_IS_MISSING);
 			return false;
 		}
 		return true;

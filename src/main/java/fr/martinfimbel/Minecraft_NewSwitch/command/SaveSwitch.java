@@ -14,6 +14,6 @@ public class SaveSwitch extends CommonSave<ISwitchConfiguration> {
 
 	@Override
 	protected void onSave(CommandSender sender, String name) {
-		sendMessageToSender(sender, ESwitchMessageCode.SAVE_SW__CONFIGURATION_SAVED, name);
+		sendSynchro(sender, ESwitchMessageCode.SAVE_SW__CONFIGURATION_SAVED, name);
 	}
 }

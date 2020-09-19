@@ -24,12 +24,12 @@ public class PeriodicSwitchTime extends AbstractLabelEdition<ISwitchConfiguratio
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		try {
 			get().setPeriodSwitchTime(LocalTime.parse(args[0]));
-			sendMessageToSender(sender, ESwitchMessageCode.SWITCH_TIME_DEFINED, DisplayHelper.toString(get().getPeriodSwitchTime(), false));
+			sendSynchro(sender, ESwitchMessageCode.SWITCH_TIME_DEFINED, DisplayHelper.toString(get().getPeriodSwitchTime(), false));
 			return true;
 		} catch (IndexOutOfBoundsException e) {
-			sendMessageToSender(sender, ESwitchMessageCode.SWITCH_TIME_MISSING_TIME);
+			sendSynchro(sender, ESwitchMessageCode.SWITCH_TIME_MISSING_TIME);
 		} catch (DateTimeParseException e) {
-			sendMessageToSender(sender, ECommonMessageCode.COMMON_BAD_TIME_FORMAT);
+			sendSynchro(sender, ECommonMessageCode.COMMON_BAD_TIME_FORMAT);
 		}
 		return false;
 	}
@@ -37,7 +37,7 @@ public class PeriodicSwitchTime extends AbstractLabelEdition<ISwitchConfiguratio
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		if (args.length == 1)
-			return Arrays.asList(getMessageFromDictionary(sender, ESwitchMessageCode.SWITCH_TIME_TAB_COMPLETE));
+			return Arrays.asList(getMessage(sender, ESwitchMessageCode.SWITCH_TIME_TAB_COMPLETE));
 		return emptyList();
 	}
 }

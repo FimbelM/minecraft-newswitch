@@ -17,13 +17,13 @@ public class LoadSwitch extends CommonLoad<ISwitchConfiguration> {
 
 	@Override
 	protected void onStyleLoaded(CommandSender sender, String name) {
-		sendMessageToSender(sender, ESwitchMessageCode.LOAD_SW__CONFIGURATION_LOADED, name);
+		sendSynchro(sender, ESwitchMessageCode.LOAD_SW__CONFIGURATION_LOADED, name);
 		setAllAvailable();
 	}
 
 	@Override
 	protected void onNameIsMissing(CommandSender sender) {
-		sendMessageToSender(sender, ESwitchMessageCode.LOAD_SW__NAME_IS_MISSING);
+		sendSynchro(sender, ESwitchMessageCode.LOAD_SW__NAME_IS_MISSING);
 	}
 
 	private void setAllAvailable() {
