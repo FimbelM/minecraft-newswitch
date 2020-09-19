@@ -19,11 +19,10 @@ import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitch;
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitchConfiguration;
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitchObjective;
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.state.IGameState;
-import fr.pederobien.minecraftdictionary.impl.MinecraftMessageEvent;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
-import fr.pederobien.minecraftmanagers.MessageManager;
-import fr.pederobien.minecraftmanagers.PlayerManager;
+import fr.pederobien.minecraftmanagers.EColor;
+import fr.pederobien.minecraftmanagers.MessageManager.DisplayOption;
 
 public class Switch implements ISwitch {
 	private IGameState initialState, startState, inGameState, stopState, current;
@@ -75,9 +74,7 @@ public class Switch implements ISwitch {
 
 	@Override
 	public void onPvpEnabled() {
-		PlayerManager.getPlayers().parallel().forEach(player -> {
-			MessageManager.sendMessage(player, Plateform.getNotificationCenter().getMessage(new MinecraftMessageEvent(player, ESwitchMessageCode.PVP_ENABLED)));
-		});
+		sendNotSynchro(ESwitchMessageCode.PVP_ENABLED, DisplayOption.TITLE, EColor.DARK_RED);
 	}
 
 	@Override
