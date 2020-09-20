@@ -22,9 +22,10 @@ public class SwitchConfiguration extends AbstractGameBorderConfiguration impleme
 	private static final Boolean DEFAULT_SWITCH_AFTER_BORDER_MOVES = false;
 	private static final Boolean DEFAULT_RANDOM_SWITCH = false;
 	private static final Boolean DEFAULT_ONE_PLAYER_SWITCH = false;
+	private static final LocalTime DEFAULT_SWITCH_COUNTDOWN = LocalTime.of(0, 0, 10);
 
 	private IGame game;
-	private LocalTime playerDontReviveTime, startSwitchTime, periodicSwitchTime;
+	private LocalTime playerDontReviveTime, startSwitchTime, periodicSwitchTime, numberOfSeconds;
 	private Integer numberOfPlayerSwitchable;
 	private Boolean isSwitchAfterBorderMoves, isRandomSwitch, isOnePlayerSwitch;
 
@@ -76,6 +77,7 @@ public class SwitchConfiguration extends AbstractGameBorderConfiguration impleme
 		joiner.add("One player switch : " + display(isOnePlayerSwitch, "" + isOnePlayerSwitchActivated()));
 		joiner.add("Switch after border moves : " + display(isSwitchAfterBorderMoves, "" + isSwitchAfterBorderMovesActivated()));
 		joiner.add("Random switch : " + display(isRandomSwitch, "" + isRandomSwitchActivated()));
+		joiner.add("Number of seconds warning before switch : " + display(numberOfSeconds, "" + getSwitchCountdownValue()));
 		return joiner.toString();
 	}
 
@@ -137,6 +139,17 @@ public class SwitchConfiguration extends AbstractGameBorderConfiguration impleme
 	@Override
 	public boolean isOnePlayerSwitchActivated() {
 		return isOnePlayerSwitch == null ? DEFAULT_ONE_PLAYER_SWITCH : isOnePlayerSwitch;
+	}
+
+	@Override
+	public void setSwitchCountdownValue(LocalTime numberOfSeconds) {
+		this.numberOfSeconds = numberOfSeconds;
+
+	}
+
+	@Override
+	public LocalTime getSwitchCountdownValue() {
+		return numberOfSeconds == null ? DEFAULT_SWITCH_COUNTDOWN : numberOfSeconds;
 	}
 
 }

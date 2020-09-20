@@ -105,4 +105,18 @@ public interface ISwitchConfiguration extends IGameBorderConfiguration {
 	 * @return if switch is going to be periodic or random
 	 */
 	boolean isRandomSwitchActivated();
+
+	/**
+	 * Define the countdown time before a switch where player will be warned every second
+	 * 
+	 * @param numberOfSeconds the number of seconds 1, 2, 3, ...
+	 */
+	void setSwitchCountdownValue(LocalTime numberOfSeconds);
+
+	/**
+	 * Define the countdown time before a switch where player will be warned every second
+	 * 
+	 * @return the defined or default value
+	 */
+	LocalTime getSwitchCountdownValue();
 }
