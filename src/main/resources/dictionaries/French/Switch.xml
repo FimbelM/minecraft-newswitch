@@ -244,5 +244,21 @@
 			<code>ENTRY_TIME_BEFORE_SWITCH</code>
 			<value>Prochain échange dans : </value> 
 		</message>
+		<message>
+			<code>NUMBER_OF_SECONDS_COUNTDOWN_EXPLANATION</code>
+			<value>Pour définir le temps avant un échange à partir duquel les joueurs seront prévenus par un décompte</value> 
+		</message>
+		<message>
+			<code>NUMBER_OF_SECONDS_MISSING_TIME</code>
+			<value>Le temps du décompte n'a pas pu être défini car il manque la valeur</value> 
+		</message>
+		<message>
+			<code>NUMBER_OF_SECONDS_DEFINED</code>
+			<value>Le temps du décompte a été défini à : %s</value> 
+		</message>
+		<message>
+			<code>NUMBER_OF_SECONDS_COUNTDOWN_TAB_COMPLETE</code>
+			<value>hh:mm:ss</value> 
+		</message>
 	</messages>
 </dictionary>
