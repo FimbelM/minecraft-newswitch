@@ -54,7 +54,7 @@ public enum ESwitchMessageCode implements IMinecraftMessageCode {
 	ENTRY_PVP_DISABLED, ENTRY_PVP_ENABLED, ENTRY_TIME_BEFORE_SWITCH,
 
 	// Code for in game messages
-	PVP_ENABLED(Permission.ALL), PLAYER_DONT_REVIVE(Permission.ALL), NO_REVIVE_IN(Permission.ALL);
+	PVP_ENABLED(Permission.ALL), PLAYER_DONT_REVIVE(Permission.ALL), NO_REVIVE_IN(Permission.ALL), NEXT_SWITCH_IN(Permission.ALL);
 
 	private Permission permission;
 

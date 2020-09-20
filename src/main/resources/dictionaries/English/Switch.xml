@@ -19,7 +19,8 @@
 		</message>
 		<message>
 			<code>NEW_SW__NAME_IS_MISSING</code>
-			<value>Cannot create a new switch configuration, the name is missing</value>
+			<value>Cannot create a new switch configuration, the name is missing
+			</value>
 		</message>
 		<message>
 			<code>NEW_SW__NAME_ALREADY_TAKEN</code>
@@ -35,11 +36,13 @@
 		</message>
 		<message>
 			<code>RENAME_SW__NAME_IS_MISSING</code>
-			<value>Cannot rename switch configuration %s, the name is missing</value>
+			<value>Cannot rename switch configuration %s, the name is missing
+			</value>
 		</message>
 		<message>
 			<code>RENAME_SW__NAME_ALREADY_TAKEN</code>
-			<value>Cannot rename switch configuration %s as %s, this configuration already exists</value>
+			<value>Cannot rename switch configuration %s as %s, this
+				configuration already exists</value>
 		</message>
 		<message>
 			<code>RENAME_SW__CONFIGURATION_RENAMED</code>
@@ -55,7 +58,8 @@
 		</message>
 		<message>
 			<code>LIST_SW__EXPLANATION</code>
-			<value>To display the name of registered switch configurations</value>
+			<value>To display the name of registered switch configurations
+			</value>
 		</message>
 		<message>
 			<code>LIST_SW__NO_REGISTERED_CONFIGURATION</code>
@@ -75,11 +79,13 @@
 		</message>
 		<message>
 			<code>DELETE_SW__NAME_IS_MISSING</code>
-			<value>Cannot delete the file of an switch configuration, the name is missing</value>
+			<value>Cannot delete the file of an switch configuration, the name is
+				missing</value>
 		</message>
 		<message>
 			<code>DELETE_SW__DID_NOT_DELETE</code>
-			<value>The deletion of the %s switch configuration file was not successful</value>
+			<value>The deletion of the %s switch configuration file was not
+				successful</value>
 		</message>
 		<message>
 			<code>DELETE_SW__CONFIGURATION_DELETED</code>
@@ -87,11 +93,13 @@
 		</message>
 		<message>
 			<code>DETAILS_SW__EXPLANATION</code>
-			<value>To display the current switch configuration characteristics</value>
+			<value>To display the current switch configuration characteristics
+			</value>
 		</message>
 		<message>
 			<code>DETAILS_SW__ON_DETAILS</code>
-			<value>Characteristics of the current switch configuration :%n%s</value>
+			<value>Characteristics of the current switch configuration :%n%s
+			</value>
 		</message>
 		<message>
 			<code>LOAD_SW__EXPLANATION</code>
@@ -99,7 +107,8 @@
 		</message>
 		<message>
 			<code>LOAD_SW__NAME_IS_MISSING</code>
-			<value>Cannot load an switch configuration, the name is missing</value>
+			<value>Cannot load an switch configuration, the name is missing
+			</value>
 		</message>
 		<message>
 			<code>LOAD_SW__CONFIGURATION_LOADED</code>
@@ -107,15 +116,18 @@
 		</message>
 		<message>
 			<code>PLAYER_DONT_REVIVE_TIME__EXPLANATION</code>
-			<value>To set the time after which players respawn in spectator mode</value>
+			<value>To set the time after which players respawn in spectator mode
+			</value>
 		</message>
 		<message>
 			<code>PLAYER_DONT_REVIVE_TIME__TIME_IS_MISSING</code>
-			<value>Cannot set the time after which players respawn in spectator mode, the time is missing</value>
+			<value>Cannot set the time after which players respawn in spectator
+				mode, the time is missing</value>
 		</message>
 		<message>
 			<code>PLAYER_DONT_REVIVE_TIME__FROM_THE_BEGINNING</code>
-			<value>Players respawn in spectator mode from the beginning of the game</value>
+			<value>Players respawn in spectator mode from the beginning of the
+				game</value>
 		</message>
 		<message>
 			<code>PLAYER_DONT_REVIVE_TIME__TIME_DEFINED</code>
@@ -131,135 +143,147 @@
 		</message>
 		<message>
 			<code>NUMBER_OF_SWITCHABLE_PLAYER_PER_TEAM_EXPLANATION</code>
-			<value>To choose the number of player switched per team</value> 
+			<value>To choose the number of player switched per team</value>
 		</message>
 		<message>
 			<code>NUMBER_OF_SWITCHED_PLAYERS_INFERIOR_AT_ONE</code>
-			<value>The number of switchable player must be equal or superior at one</value> 
+			<value>The number of switchable player must be equal or superior at
+				one</value>
 		</message>
 		<message>
 			<code>NUMBER_OF_SWITCHABLE_PLAYER_PER_TEAM_DEFINED</code>
-			<value>The number of switchable player has been defined to %s</value> 
+			<value>The number of switchable player has been defined to %s</value>
 		</message>
 		<message>
 			<code>NUMBER_OF_SWITCHABLE_PLAYER_PER_TEAM_MISSING_NUMBER</code>
-			<value>The number of switchable player hasn't been defined</value> 
+			<value>The number of switchable player hasn't been defined</value>
 		</message>
 		<message>
 			<code>NUMBER_OF_SWITCHABLE_PLAYER_PER_TEAM_BAD_FORMAT</code>
-			<value>The number of switchable player must be an integer</value> 
+			<value>The number of switchable player must be an integer</value>
 		</message>
 		<message>
 			<code>NUMBER_OF_SWITCHABLE_PLAYER_ON_TAB_COMPLETE</code>
-			<value>1, 2, 3, ...</value> 
+			<value>1, 2, 3, ...</value>
 		</message>
 		<message>
 			<code>SWITCH_AFTER_BORDER_MOVES_EXPLANATION</code>
-			<value>To choose if switch player after border moves is activated or not</value> 
+			<value>To choose if switch player after border moves is activated or
+				not</value>
 		</message>
 		<message>
 			<code>SWITCH_AFTER_BORDER_MOVES_DEFINED</code>
-			<value>Switch after border moves has been defined to %s</value> 
+			<value>Switch after border moves has been defined to %s</value>
 		</message>
 		<message>
 			<code>SWITCH_AFTER_BORDER_MOVES_VALUE_IS_MISSING</code>
-			<value>Switch after border cannot be defined, value is missing</value> 
-		</message>		
+			<value>Switch after border cannot be defined, value is missing
+			</value>
+		</message>
 		<message>
 			<code>SWITCH_AFTER_BORDER_MOVES_TAB_COMPLETE</code>
-			<value>true/false</value> 
+			<value>true/false</value>
 		</message>
 		<message>
 			<code>ONE_PLAYER_SWITCH_EXPLANATION</code>
-			<value>To choose if a player that is alone in a team can be switched</value> 
+			<value>To choose if a player that is alone in a team can be switched
+			</value>
 		</message>
 		<message>
 			<code>ONE_PLAYER_SWITCH_DEFINED</code>
-			<value>One player switch has been defined to %s</value> 
-		</message>		
+			<value>One player switch has been defined to %s</value>
+		</message>
 		<message>
 			<code>ONE_PLAYER_SWITCH_VALUE_IS_MISSING</code>
-			<value>One player switch cannot be defined, value is missing</value> 
-		</message>		
+			<value>One player switch cannot be defined, value is missing</value>
+		</message>
 		<message>
 			<code>ONE_PLAYER_SWITCH_TAB_COMPLETE</code>
-			<value>true/false</value> 
+			<value>true/false</value>
 		</message>
 		<message>
 			<code>START_SWITCH_TIME_EXPLANATION</code>
-			<value>To define the time of the first switch</value> 
+			<value>To define the time of the first switch</value>
 		</message>
 		<message>
 			<code>START_SWITCH_TIME_DEFINED</code>
-			<value>Start switch time has been defined at %s</value> 
+			<value>Start switch time has been defined at %s</value>
 		</message>
 		<message>
 			<code>SWITCH_TIME_MISSING_TIME</code>
-			<value>Start or periodic switch time hasn't been defined, value is missing</value> 
-		</message>		
+			<value>Start or periodic switch time hasn't been defined, value is
+				missing</value>
+		</message>
 		<message>
 			<code>BAD_TIME_FORMAT</code>
-			<value>Any switch time must be at format hh:mm:ss</value> 
+			<value>Any switch time must be at format hh:mm:ss</value>
 		</message>
 		<message>
 			<code>SWITCH_TIME_TAB_COMPLETE</code>
-			<value>hh:mm:ss</value> 
-		</message>	
+			<value>hh:mm:ss</value>
+		</message>
 		<message>
 			<code>SWITCH_TIME_EXPLANATION</code>
-			<value>To define the time between periodic switch</value> 
+			<value>To define the time between periodic switch</value>
 		</message>
 		<message>
 			<code>SWITCH_TIME_DEFINED</code>
-			<value>Periodic switch time has been defined at %s</value> 
+			<value>Periodic switch time has been defined at %s</value>
 		</message>
 		<message>
 			<code>RANDOM_SWITCH_EXPLANATION</code>
-			<value>Define if the switches will be periodic or randomly happening</value> 
+			<value>Define if the switches will be periodic or randomly happening
+			</value>
 		</message>
 		<message>
 			<code>RANDOM_SWITCH_DEFINED</code>
-			<value>Random switch has been defined to : %s</value> 
+			<value>Random switch has been defined to : %s</value>
 		</message>
 		<message>
 			<code>RANDOM_SWITCH_VALUE_IS_MISSING</code>
-			<value>Random switch cannot be defined, the value is missing</value> 
+			<value>Random switch cannot be defined, the value is missing</value>
 		</message>
 		<message>
 			<code>RANDOM_SWITCH_TAB_COMPLETE</code>
-			<value>true/false</value> 
+			<value>true/false</value>
 		</message>
 		<message>
 			<code>NO_REVIVE_IN</code>
-			<value>No revive in %s</value> 
+			<value>No revive in %s</value>
 		</message>
 		<message>
 			<code>ENTRY_PVP_DISABLED</code>
-			<value>PVP enabled in : </value> 
+			<value>PVP enabled in : </value>
 		</message>
 		<message>
 			<code>ENTRY_PVP_ENABLED</code>
-			<value>PVP enabled</value> 
+			<value>PVP enabled</value>
 		</message>
 		<message>
 			<code>ENTRY_TIME_BEFORE_SWITCH</code>
-			<value>Next switch in : </value> 
+			<value>Next switch in : </value>
 		</message>
 		<message>
 			<code>NUMBER_OF_SECONDS_COUNTDOWN_EXPLANATION</code>
-			<value>To define the time before a switch from which players will be warned by a countdown</value> 
+			<value>To define the time before a switch from which players will be
+				warned by a countdown</value>
 		</message>
 		<message>
 			<code>NUMBER_OF_SECONDS_MISSING_TIME</code>
-			<value>Countdown time hasn't been defined, value is missing</value> 
+			<value>Countdown time hasn't been defined, value is missing</value>
 		</message>
 		<message>
 			<code>NUMBER_OF_SECONDS_DEFINED</code>
-			<value>Countdown time has been defined to : %s</value> 
+			<value>Countdown time has been defined to : %s</value>
 		</message>
 		<message>
 			<code>NUMBER_OF_SECONDS_COUNTDOWN_TAB_COMPLETE</code>
-			<value>hh:mm:ss</value> 
+			<value>hh:mm:ss</value>
 		</message>
+		<message>
+			<code>NEXT_SWITCH_IN</code>
+			<value>Next switch in : </value>
+		</message>
+		
 	</messages>
 </dictionary>

@@ -260,5 +260,9 @@
 			<code>NUMBER_OF_SECONDS_COUNTDOWN_TAB_COMPLETE</code>
 			<value>hh:mm:ss</value> 
 		</message>
+				<message>
+			<code>NEXT_SWITCH_IN</code>
+			<value>Prochain échange dans : </value>
+		</message>
 	</messages>
 </dictionary>
