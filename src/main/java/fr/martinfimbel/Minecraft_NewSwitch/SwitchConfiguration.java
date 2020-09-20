@@ -16,13 +16,13 @@ import fr.pederobien.minecraftmanagers.WorldManager;
 
 public class SwitchConfiguration extends AbstractGameBorderConfiguration implements ISwitchConfiguration {
 	private static final LocalTime DEFAULT_PLAYER_DONT_REVIVE_TIME = LocalTime.of(0, 0, 0);
-	private static final Integer DEFAULT_NUMBER_OF_PLAYER_SWITCHABLE = 1;
 	private static final LocalTime DEFAULT_START_SWITCH_TIME = LocalTime.of(0, 20, 0);
 	private static final LocalTime DEFAULT_PERIODIC_SWITCH_TIME = LocalTime.of(0, 20, 0);
+	private static final LocalTime DEFAULT_SWITCH_COUNTDOWN = LocalTime.of(0, 0, 10);
 	private static final Boolean DEFAULT_SWITCH_AFTER_BORDER_MOVES = false;
 	private static final Boolean DEFAULT_RANDOM_SWITCH = false;
 	private static final Boolean DEFAULT_ONE_PLAYER_SWITCH = false;
-	private static final LocalTime DEFAULT_SWITCH_COUNTDOWN = LocalTime.of(0, 0, 10);
+	private static final Integer DEFAULT_NUMBER_OF_PLAYER_SWITCHABLE = 1;
 
 	private IGame game;
 	private LocalTime playerDontReviveTime, startSwitchTime, periodicSwitchTime, numberOfSeconds;
@@ -77,7 +77,7 @@ public class SwitchConfiguration extends AbstractGameBorderConfiguration impleme
 		joiner.add("One player switch : " + display(isOnePlayerSwitch, "" + isOnePlayerSwitchActivated()));
 		joiner.add("Switch after border moves : " + display(isSwitchAfterBorderMoves, "" + isSwitchAfterBorderMovesActivated()));
 		joiner.add("Random switch : " + display(isRandomSwitch, "" + isRandomSwitchActivated()));
-		joiner.add("Number of seconds warning before switch : " + display(numberOfSeconds, "" + getSwitchCountdownValue()));
+		joiner.add("Number of seconds warning before switch : " + display(numberOfSeconds, "" + getSwitchCountdownTime()));
 		return joiner.toString();
 	}
 
@@ -142,13 +142,13 @@ public class SwitchConfiguration extends AbstractGameBorderConfiguration impleme
 	}
 
 	@Override
-	public void setSwitchCountdownValue(LocalTime numberOfSeconds) {
+	public void setSwitchCountdownTime(LocalTime numberOfSeconds) {
 		this.numberOfSeconds = numberOfSeconds;
 
 	}
 
 	@Override
-	public LocalTime getSwitchCountdownValue() {
+	public LocalTime getSwitchCountdownTime() {
 		return numberOfSeconds == null ? DEFAULT_SWITCH_COUNTDOWN : numberOfSeconds;
 	}
 

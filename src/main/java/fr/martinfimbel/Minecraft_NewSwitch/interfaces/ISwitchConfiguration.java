@@ -111,12 +111,12 @@ public interface ISwitchConfiguration extends IGameBorderConfiguration {
 	 * 
 	 * @param numberOfSeconds the number of seconds 1, 2, 3, ...
 	 */
-	void setSwitchCountdownValue(LocalTime numberOfSeconds);
+	void setSwitchCountdownTime(LocalTime numberOfSeconds);
 
 	/**
 	 * Define the countdown time before a switch where player will be warned every second
 	 * 
 	 * @return the defined or default value
 	 */
-	LocalTime getSwitchCountdownValue();
+	LocalTime getSwitchCountdownTime();
 }

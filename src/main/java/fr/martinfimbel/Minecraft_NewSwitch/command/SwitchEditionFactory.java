@@ -102,4 +102,8 @@ public class SwitchEditionFactory {
 	public static IMapPersistenceEdition<ISwitchConfiguration> periodicSwitchTime() {
 		return new PeriodicSwitchTime();
 	}
+
+	public static IMapPersistenceEdition<ISwitchConfiguration> switchCountdownTime() {
+		return new SwitchCountdownTime();
+	}
 }
