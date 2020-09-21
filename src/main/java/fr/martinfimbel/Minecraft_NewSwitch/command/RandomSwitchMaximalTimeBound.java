@@ -34,7 +34,7 @@ public class RandomSwitchMaximalTimeBound extends AbstractLabelEdition<ISwitchCo
 			IBorderConfiguration borderConf = get().getBorder(WorldManager.OVERWORLD).get();
 			LocalTime borderStart = borderConf.getStartTime();
 			LocalTime upperBound = borderStart.minusSeconds(get().getMaximalSwitchTime().toSecondOfDay());
-			sendSynchro(sender, ESwitchMessageCode.RANDOM_SWITCH_MAXIMAL_TIME_DEFINED, DisplayHelper.toString(get().getMaximalSwitchTime(), false),
+			sendSynchro(sender, ESwitchMessageCode.RANDOM_SWITCH_MAXIMAL_TIME_DEFINED, DisplayHelper.toString(get().getMaximalSwitchTime(), true),
 					DisplayHelper.toString(upperBound, false));
 			return true;
 		} catch (IndexOutOfBoundsException e) {

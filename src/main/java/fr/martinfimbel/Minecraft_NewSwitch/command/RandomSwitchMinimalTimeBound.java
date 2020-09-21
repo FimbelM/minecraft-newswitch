@@ -29,7 +29,7 @@ public class RandomSwitchMinimalTimeBound extends AbstractLabelEdition<ISwitchCo
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		try {
 			get().setMinimalSwitchTime(LocalTime.parse(args[0]));
-			sendSynchro(sender, ESwitchMessageCode.RANDOM_SWITCH_MINIMAL_TIME_DEFINED, DisplayHelper.toString(get().getMinimalSwitchTime(), false));
+			sendSynchro(sender, ESwitchMessageCode.RANDOM_SWITCH_MINIMAL_TIME_DEFINED, DisplayHelper.toString(get().getMinimalSwitchTime(), true));
 			return true;
 		} catch (IndexOutOfBoundsException e) {
 			sendSynchro(sender, ESwitchMessageCode.RANDOM_SWITCH_MINIMAL_MAXIMAL_TIME_MISSING_TIME);
