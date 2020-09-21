@@ -266,7 +266,7 @@
 		</message>
 		<message>
 			<code>NEXT_SWITCH_IN</code>
-			<value>Prochain échange dans : </value>
+			<value>Prochain échange dans : %s</value>
 		</message>
 		<message>
 			<code>AVERAGE_NUMBER_OF_SWITCH_EXPLANATION</code>
