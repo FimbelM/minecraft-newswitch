@@ -19,14 +19,17 @@ public class SwitchConfiguration extends AbstractGameBorderConfiguration impleme
 	private static final LocalTime DEFAULT_START_SWITCH_TIME = LocalTime.of(0, 20, 0);
 	private static final LocalTime DEFAULT_PERIODIC_SWITCH_TIME = LocalTime.of(0, 20, 0);
 	private static final LocalTime DEFAULT_SWITCH_COUNTDOWN = LocalTime.of(0, 0, 10);
+	private static final LocalTime DEFAULT_MINIMAL_RANDOM_SWITCH_TIME = LocalTime.of(0, 10, 0);
+	private static final LocalTime DEFAULT_MAXIMAL_RANDOM_SWITCH_TIME = LocalTime.of(0, 10, 0);
 	private static final Boolean DEFAULT_SWITCH_AFTER_BORDER_MOVES = false;
 	private static final Boolean DEFAULT_RANDOM_SWITCH = false;
 	private static final Boolean DEFAULT_ONE_PLAYER_SWITCH = false;
 	private static final Integer DEFAULT_NUMBER_OF_PLAYER_SWITCHABLE = 1;
+	private static final Integer DEFAULT_AVERAGE_NUMBER_OF_SWITCH = 5;
 
 	private IGame game;
-	private LocalTime playerDontReviveTime, startSwitchTime, periodicSwitchTime, numberOfSeconds;
-	private Integer numberOfPlayerSwitchable;
+	private LocalTime playerDontReviveTime, startSwitchTime, periodicSwitchTime, beforeSwitchCountdown, minimalRandomSwitchTime, maximalRandomSwitchTime;
+	private Integer numberOfPlayerSwitchable, averageNumberOfSwitch;
 	private Boolean isSwitchAfterBorderMoves, isRandomSwitch, isOnePlayerSwitch;
 
 	public SwitchConfiguration(String name) {
@@ -77,7 +80,10 @@ public class SwitchConfiguration extends AbstractGameBorderConfiguration impleme
 		joiner.add("One player switch : " + display(isOnePlayerSwitch, "" + isOnePlayerSwitchActivated()));
 		joiner.add("Switch after border moves : " + display(isSwitchAfterBorderMoves, "" + isSwitchAfterBorderMovesActivated()));
 		joiner.add("Random switch : " + display(isRandomSwitch, "" + isRandomSwitchActivated()));
-		joiner.add("Number of seconds warning before switch : " + display(numberOfSeconds, "" + getSwitchCountdownTime()));
+		joiner.add("Number of seconds warning before switch : " + display(beforeSwitchCountdown, "" + getSwitchCountdownTime()));
+		joiner.add("Average switch number : " + display(averageNumberOfSwitch, "" + getAverageNumberOfSwitch()));
+		joiner.add("Minimal time without switch when random : " + display(minimalRandomSwitchTime, "" + getMinimalSwitchTime()));
+		joiner.add("Maximal time with switch when random : " + display(maximalRandomSwitchTime, "" + getMaximalSwitchTime()));
 		return joiner.toString();
 	}
 
@@ -143,13 +149,44 @@ public class SwitchConfiguration extends AbstractGameBorderConfiguration impleme
 
 	@Override
 	public void setSwitchCountdownTime(LocalTime numberOfSeconds) {
-		this.numberOfSeconds = numberOfSeconds;
+		this.beforeSwitchCountdown = numberOfSeconds;
 
 	}
 
 	@Override
 	public LocalTime getSwitchCountdownTime() {
-		return numberOfSeconds == null ? DEFAULT_SWITCH_COUNTDOWN : numberOfSeconds;
+		return beforeSwitchCountdown == null ? DEFAULT_SWITCH_COUNTDOWN : beforeSwitchCountdown;
+	}
+
+	@Override
+	public void setAverageNumberOfSwitch(int averageNumberOfSwitch) {
+		this.averageNumberOfSwitch = averageNumberOfSwitch;
+	}
+
+	@Override
+	public int getAverageNumberOfSwitch() {
+		return averageNumberOfSwitch == null ? DEFAULT_AVERAGE_NUMBER_OF_SWITCH : averageNumberOfSwitch;
+	}
+
+	@Override
+	public void setMinimalSwitchTime(LocalTime minimalSwitchTime) {
+		this.minimalRandomSwitchTime = minimalSwitchTime;
+	}
+
+	@Override
+	public LocalTime getMinimalSwitchTime() {
+		return minimalRandomSwitchTime == null ? DEFAULT_MINIMAL_RANDOM_SWITCH_TIME : minimalRandomSwitchTime;
+	}
+
+	@Override
+	public void setMaximalSwitchTime(LocalTime maximalSwitchTime) {
+		this.maximalRandomSwitchTime = maximalSwitchTime;
+
+	}
+
+	@Override
+	public LocalTime getMaximalSwitchTime() {
+		return maximalRandomSwitchTime == null ? DEFAULT_MAXIMAL_RANDOM_SWITCH_TIME : maximalRandomSwitchTime;
 	}
 
 }

@@ -119,4 +119,51 @@ public interface ISwitchConfiguration extends IGameBorderConfiguration {
 	 * @return the defined or default value
 	 */
 	LocalTime getSwitchCountdownTime();
+
+	/**
+	 * Define a number that will be used as a parameter in Poisson Law to randomly generate a number of switch This number of switch
+	 * will be unknown by the players
+	 * 
+	 * @param averageNumberOfSwitch the parameter chosen in entry
+	 */
+	void setAverageNumberOfSwitch(int averageNumberOfSwitch);
+
+	/**
+	 * Define a number that will be used as a parameter in Poisson Law to randomly generate a number of switch This number of switch
+	 * will be unknown by the players
+	 * 
+	 * @return the parameter chosen in entry
+	 */
+	int getAverageNumberOfSwitch();
+
+	/**
+	 * Define the minimal time amount, if switches are randomly occurring, after which switch can occur
+	 * 
+	 * @param minimalSwitchTime hh:mm:ss
+	 */
+	void setMinimalSwitchTime(LocalTime minimalSwitchTime);
+
+	/**
+	 * Define the lower time bound, if switches are randomly occurring, before which switch can not occur
+	 * 
+	 * @return the defined or default value
+	 */
+	LocalTime getMinimalSwitchTime();
+
+	/**
+	 * Define a time that will be used to calculate the upper time bound, if switches are randomly occurring, after which switch can
+	 * not occur The calculation of upper time bound will be this one : BorderStartTime - maximalSwitchTime = upperBoundTime
+	 * 
+	 * @param maximalSwitchTime hh:mm:ss
+	 */
+	void setMaximalSwitchTime(LocalTime maximalSwitchTime);
+
+	/**
+	 * Define a time that will be used to calculate the upper time bound, if switches are randomly occurring, after which switch can
+	 * not occur
+	 * 
+	 * @return the defined or default value
+	 */
+	LocalTime getMaximalSwitchTime();
+
 }

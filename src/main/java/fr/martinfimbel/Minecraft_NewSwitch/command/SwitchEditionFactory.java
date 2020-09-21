@@ -106,4 +106,16 @@ public class SwitchEditionFactory {
 	public static IMapPersistenceEdition<ISwitchConfiguration> switchCountdownTime() {
 		return new SwitchCountdownTime();
 	}
+
+	public static IMapPersistenceEdition<ISwitchConfiguration> averageNumberOfSwitch() {
+		return new AverageNumberOfSwitch();
+	}
+
+	public static IMapPersistenceEdition<ISwitchConfiguration> randomSwitchMinimalBound() {
+		return new RandomSwitchMinimalTimeBound();
+	}
+
+	public static IMapPersistenceEdition<ISwitchConfiguration> randomSwitchMaximalBound() {
+		return new RandomSwitchMaximalTimeBound();
+	}
 }

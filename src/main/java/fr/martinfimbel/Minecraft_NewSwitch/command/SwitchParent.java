@@ -20,6 +20,9 @@ public class SwitchParent extends AbstractGameBorderConfigurationParent<ISwitchC
 		addEdition(SwitchEditionFactory.switchAfterBorderMoves());
 		addEdition(SwitchEditionFactory.periodicSwitchTime());
 		addEdition(SwitchEditionFactory.switchCountdownTime());
+		addEdition(SwitchEditionFactory.averageNumberOfSwitch());
+		addEdition(SwitchEditionFactory.randomSwitchMinimalBound());
+		addEdition(SwitchEditionFactory.randomSwitchMaximalBound());
 	}
 
 	@Override
