@@ -147,7 +147,7 @@
 		</message>
 		<message>
 			<code>NUMBER_OF_SWITCHED_PLAYERS_INFERIOR_AT_ONE</code>
-			<value>The number of switchable player must be equal or superior at
+			<value>The number of switchable player must be superior or equal at
 				one</value>
 		</message>
 		<message>
@@ -264,6 +264,10 @@
 			<value>Next switch in : </value>
 		</message>
 		<message>
+			<code>ENTRY_SWITCH_DEACTIVATED</code>
+			<value>No information on switches</value>
+		</message>
+		<message>
 			<code>NUMBER_OF_SECONDS_COUNTDOWN_EXPLANATION</code>
 			<value>To define the time before a switch from which players will be
 				warned by a countdown</value>
@@ -283,6 +287,50 @@
 		<message>
 			<code>NEXT_SWITCH_IN</code>
 			<value>Next switch in : </value>
+		</message>
+		<message>
+			<code>AVERAGE_NUMBER_OF_SWITCH_EXPLANATION</code>
+			<value>The chosen number is used by a Poisson law to randomly determine the number of switch that will occur during the game</value>
+		</message>
+		<message>
+			<code>AVERAGE_NUMBER_OF_SWITCH_DEFINED</code>
+			<value>The average number of switch has been defined to : %s</value>
+		</message>
+		<message>
+			<code>AVERAGE_NUMBER_OF_SWITCH_INFERIOR_AT_ONE</code>
+			<value>The average number of switch must be superior or equal at one</value> 
+		</message>
+		<message>
+			<code>AVERAGE_NUMBER_OF_SWITCH_MISSING_NUMBER</code>
+			<value>The average number of switch hasn't been defined, value is missing</value> 
+		</message>
+		<message>
+			<code>AVERAGE_NUMBER_OF_SWITCH_TAB_COMPLETE</code>
+			<value>1, 2, 3, 4, 5, ...</value> 
+		</message>
+		<message>
+			<code>RANDOM_SWITCH_MINIMAL_TIME_EXPLANATION</code>
+			<value>When random switch is activated, this time is the lower bound of randomly picked switch time</value>
+		</message>
+		<message>
+			<code>RANDOM_SWITCH_MAXIMAL_TIME_EXPLANATION</code>
+			<value>When random switch is activated, this time is used to calculate the upper bound of randomly picked switch time</value>
+		</message>
+		<message>
+			<code>RANDOM_SWITCH_MINIMAL_TIME_DEFINED</code>
+			<value>Lower bound time as been defined to : %s</value>
+		</message>
+		<message>
+			<code>RANDOM_SWITCH_MAXIMAL_TIME_DEFINED</code>
+			<value>Maximal switch time as been defined to : %s and upper bound has been defined to : %s</value>
+		</message>
+		<message>
+			<code>RANDOM_SWITCH_MINIMAL_MAXIMAL_TIME_MISSING_TIME</code>
+			<value>Maximal or minimal time bounds cannot be defined, value is missing</value>
+		</message>
+		<message>
+			<code>RANDOM_SWITCH_MINIMAL_MAXIMAL_TIME_TAB_COMPLETE</code>
+			<value>hh:mm:ss</value>
 		</message>
 		
 	</messages>

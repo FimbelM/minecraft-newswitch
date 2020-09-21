@@ -245,6 +245,10 @@
 			<value>Prochain échange dans : </value> 
 		</message>
 		<message>
+			<code>ENTRY_SWITCH_DEACTIVATED</code>
+			<value>Pas d'information sur les échanges</value>
+		</message>
+		<message>
 			<code>NUMBER_OF_SECONDS_COUNTDOWN_EXPLANATION</code>
 			<value>Pour définir le temps avant un échange à partir duquel les joueurs seront prévenus par un décompte</value> 
 		</message>
@@ -260,9 +264,53 @@
 			<code>NUMBER_OF_SECONDS_COUNTDOWN_TAB_COMPLETE</code>
 			<value>hh:mm:ss</value> 
 		</message>
-				<message>
+		<message>
 			<code>NEXT_SWITCH_IN</code>
 			<value>Prochain échange dans : </value>
+		</message>
+		<message>
+			<code>AVERAGE_NUMBER_OF_SWITCH_EXPLANATION</code>
+			<value>Le nombre choisi est utilisé par une loi de poisson pour déterminer le nombre d'échange dans une partie de manière aléatoire </value>
+		</message>
+		<message>
+			<code>AVERAGE_NUMBER_OF_SWITCH_DEFINED</code>
+			<value>Le nombre moyen d'échange est déterminé à : %s</value>
+		</message>
+		<message>
+			<code>AVERAGE_NUMBER_OF_SWITCH_INFERIOR_AT_ONE</code>
+			<value>Le nombre d'échange moyen doit être supérieur ou égal à un</value> 
+		</message>
+		<message>
+			<code>AVERAGE_NUMBER_OF_SWITCH_MISSING_NUMBER</code>
+			<value>Le nombre moyen d'échange n'a pas pu être défini car il manque la valeur</value> 
+		</message>
+		<message>
+			<code>AVERAGE_NUMBER_OF_SWITCH_TAB_COMPLETE</code>
+			<value>1, 2, 3, 4, 5, ...</value> 
+		</message>
+		<message>
+			<code>RANDOM_SWITCH_MINIMAL_TIME_EXPLANATION</code>
+			<value>Quand les échanges au hasard sont activés, ce temps définit la borne inférieure du choix des temps d'échange</value>
+		</message>
+		<message>
+			<code>RANDOM_SWITCH_MAXIMAL_TIME_EXPLANATION</code>
+			<value>Quand les échanges au hasard sont activés, ce temps est utilisé pour définir la borne supérieure du choix des temps d'échange</value>
+		</message>
+		<message>
+			<code>RANDOM_SWITCH_MINIMAL_TIME_DEFINED</code>
+			<value>La borne inférieure est définie à : %s</value>
+		</message>
+		<message>
+			<code>RANDOM_SWITCH_MAXIMAL_TIME_DEFINED</code>
+			<value>Le temps maximum est défini à : %s et la borne supérieure est calculée comme étant : %s</value>
+		</message>
+		<message>
+			<code>RANDOM_SWITCH_MINIMAL_MAXIMAL_TIME_MISSING_TIME</code>
+			<value>Le temps maximal ou minimal n'a pas pu être défini car il manque la valeur</value>
+		</message>
+		<message>
+			<code>RANDOM_SWITCH_MINIMAL_MAXIMAL_TIME_TAB_COMPLETE</code>
+			<value>hh:mm:ss</value>
 		</message>
 	</messages>
 </dictionary>
