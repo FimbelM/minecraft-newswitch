@@ -22,10 +22,8 @@ public class RandomSwitch extends AbstractLabelEdition<ISwitchConfiguration> {
 			String value = args[0];
 			if (value.equals("true")) {
 				get().setRandomSwitch(true);
-				disableSwitchTimeCommands();
 			} else if (value.equals("false")) {
 				get().setRandomSwitch(false);
-				enableSwitchTimeCommands();
 			} else {
 				sendSynchro(sender, ECommonMessageCode.COMMON_BAD_BOOLEAN_FORMAT);
 				return false;
@@ -36,16 +34,6 @@ public class RandomSwitch extends AbstractLabelEdition<ISwitchConfiguration> {
 			return false;
 		}
 		return true;
-	}
-
-	private void enableSwitchTimeCommands() {
-		setAvailableLabelEdition(ESwitchLabel.START_SWITCH_TIME);
-		setAvailableLabelEdition(ESwitchLabel.SWITCH_TIME);
-	}
-
-	private void disableSwitchTimeCommands() {
-		setNotAvailableLabelEdition(ESwitchLabel.START_SWITCH_TIME);
-		setNotAvailableLabelEdition(ESwitchLabel.SWITCH_TIME);
 	}
 
 	@Override

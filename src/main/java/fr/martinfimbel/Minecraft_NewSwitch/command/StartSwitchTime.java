@@ -21,6 +21,11 @@ public class StartSwitchTime extends AbstractLabelEdition<ISwitchConfiguration> 
 	}
 
 	@Override
+	public boolean isAvailable() {
+		return get() != null && !get().isRandomSwitchActivated();
+	}
+
+	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		try {
 			get().setStartSwitchTime(LocalTime.parse(args[0]));

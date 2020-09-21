@@ -21,6 +21,11 @@ public class PeriodicSwitchTime extends AbstractLabelEdition<ISwitchConfiguratio
 	}
 
 	@Override
+	public boolean isAvailable() {
+		return get() != null && !get().isRandomSwitchActivated();
+	}
+
+	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		try {
 			get().setPeriodSwitchTime(LocalTime.parse(args[0]));
