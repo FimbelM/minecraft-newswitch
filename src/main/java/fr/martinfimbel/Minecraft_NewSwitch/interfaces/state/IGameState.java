@@ -1,5 +1,8 @@
 package fr.martinfimbel.Minecraft_NewSwitch.interfaces.state;
 
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+
 import fr.pederobien.minecraftgameplateform.interfaces.editions.IPlateformCodeSender;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
 import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.IObsTimeLine;
@@ -7,9 +10,15 @@ import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.IObsTime
 public interface IGameState extends IObsTimeLine, IPlateformCodeSender {
 
 	/**
+	 * Initialize this game.
+	 * 
+	 * @param sender  Source of the command
+	 * @param command Command which was executed
+	 * @param label   Alias of the command which was used
+	 * @param args    Passed command arguments
 	 * @return True if the game is successful initiated, false otherwise.
 	 */
-	boolean initiate();
+	boolean initiate(CommandSender sender, Command command, String label, String[] args);
 
 	/**
 	 * Method called to start the game.

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scoreboard.Scoreboard;
@@ -43,8 +45,8 @@ public class Switch implements ISwitch {
 	}
 
 	@Override
-	public boolean initiate() {
-		return current.initiate();
+	public boolean initiate(CommandSender sender, Command command, String label, String[] args) {
+		return current.initiate(sender, command, label, args);
 	}
 
 	@Override

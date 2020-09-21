@@ -2,6 +2,9 @@ package fr.martinfimbel.Minecraft_NewSwitch.impl.state;
 
 import java.time.LocalTime;
 
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+
 import fr.martinfimbel.Minecraft_NewSwitch.impl.SwitchActivator;
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitch;
 import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.IObsTimeLine;
@@ -21,11 +24,11 @@ public class InitialState extends AbstractState {
 	}
 
 	@Override
-	public boolean initiate() {
+	public boolean initiate(CommandSender sender, Command command, String label, String[] args) {
 		getConfiguration().getBorders().forEach(border -> border.apply(Plateform.getTimeLine()));
 		Plateform.getTimeLine().addObserver(getConfiguration().getPlayerDontReviveTime(), getGame());
 		Plateform.getTimeLine().addObserver(getConfiguration().getBorder(WorldManager.OVERWORLD).get().getStartTime(), teamObjective);
-		switchActivator.initialize();
+		switchActivator.initializeTimeMap();
 		Plateform.getTimeLine().addObserver(switchActivator.getNextNotifiedTime(), switchActivator);
 		PlayerManager.getPlayers().forEach(player -> getGame().createObjective(ScoreboardManager.createScoreboard(), player));
 		return true;
