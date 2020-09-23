@@ -10,6 +10,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -18,18 +19,17 @@ import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitchConfiguration;
 import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.interfaces.editions.IPlateformCodeSender;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
+import fr.pederobien.minecraftgameplateform.interfaces.helpers.IGameConfigurationHelper;
 import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.IObsTimeLine;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
-import fr.pederobien.minecraftmanagers.BukkitManager;
 import fr.pederobien.minecraftmanagers.EColor;
-import fr.pederobien.minecraftmanagers.MessageManager;
 import fr.pederobien.minecraftmanagers.MessageManager.DisplayOption;
-import fr.pederobien.minecraftmanagers.MessageManager.TitleMessage;
 import fr.pederobien.minecraftmanagers.PlayerManager;
 import fr.pederobien.minecraftmanagers.WorldManager;
 
 public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 	private ISwitchConfiguration configuration;
+	private IGameConfigurationHelper helper;
 	private IBorderConfiguration borderConf;
 	private int countdownTime, currentCountdown, lambda, count;
 	private boolean isRandomSwitchActivated;
@@ -38,6 +38,7 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 
 	public SwitchActivator(ISwitchConfiguration configuration) {
 		this.configuration = configuration;
+		helper = Plateform.getOrCreateConfigurationHelper(configuration);
 	}
 
 	public void initializeTimeMap() {
@@ -144,7 +145,7 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 		// Plateform.getOrCreateConfigurationHelper(configuration) --> accès à toutes les commandes concernant les équipes;
 
 		// setup de la liste de joueurs
-		Stream<Player> availablePlayersStream = Plateform.getOrCreateConfigurationHelper(configuration).getNotFreePlayers();
+		Stream<Player> availablePlayersStream = helper.getNotFreePlayers().filter(player -> player.getGameMode().equals(GameMode.SURVIVAL));
 		List<Player> availablePlayerList = availablePlayersStream.collect(Collectors.toList());
 
 		// choix des joueurs
@@ -159,7 +160,7 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 		modifySelectedPlayersTeam(chosenPlayers, playersTeam);
 
 		// reset du countdown et message du switch
-		MessageManager.sendMessage(DisplayOption.TITLE, PlayerManager.getPlayer("Nightraven87"), TitleMessage.of("SWITCH", EColor.DARK_RED));
+		sendNotSynchro(ESwitchMessageCode.SWITCH, DisplayOption.TITLE, EColor.DARK_RED);
 		currentCountdown = getCountDown();
 	}
 
@@ -212,20 +213,21 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 
 		// choix joueur 1
 		Player chosenPlayerOne = playerList.get(rand.nextInt(playerList.size()));
-		ITeam playerOneTeam = Plateform.getOrCreateConfigurationHelper(configuration).getTeam(chosenPlayerOne).get();
+		ITeam playerOneTeam = helper.getTeam(chosenPlayerOne).get();
+		playerList.remove(chosenPlayerOne);
 		selectedPlayers.add(chosenPlayerOne);
 
 		// choix du joueur 2 avec tri
 		Player chosenPlayerTwo = playerList.get(rand.nextInt(playerList.size()));
-		ITeam playerTwoTeam = Plateform.getOrCreateConfigurationHelper(configuration).getTeam(chosenPlayerTwo).get();
+		playerList.remove(chosenPlayerTwo);
+		ITeam playerTwoTeam = helper.getTeam(chosenPlayerTwo).get();
 		while (playerTwoTeam == playerOneTeam) {
 			chosenPlayerTwo = playerList.get(rand.nextInt(playerList.size()));
-			playerTwoTeam = Plateform.getOrCreateConfigurationHelper(configuration).getTeam(chosenPlayerTwo).get();
+			playerList.remove(chosenPlayerTwo);
+			playerTwoTeam = helper.getTeam(chosenPlayerTwo).get();
 		}
 		selectedPlayers.add(chosenPlayerTwo);
 
-		for (int i = 0; i < selectedPlayers.size(); i++)
-			BukkitManager.broadcastMessage("Player " + i + 1 + " : " + selectedPlayers.get(i));
 		return selectedPlayers;
 	}
 
@@ -234,7 +236,7 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 
 		for (int i = 0; i < chosenPlayers.size(); i++) {
 			Player actualPlayer = chosenPlayers.get(i);
-			teams.add(Plateform.getOrCreateConfigurationHelper(configuration).getTeam(actualPlayer).get());
+			teams.add(helper.getTeam(actualPlayer).get());
 		}
 		return teams;
 	}
@@ -254,8 +256,8 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 
 	private void modifySelectedPlayersTeam(List<Player> chosenPlayers, List<ITeam> playersTeam) {
 		for (int i = 0; i < chosenPlayers.size(); i += 2) {
-			Plateform.getOrCreateConfigurationHelper(configuration).movePlayer(chosenPlayers.get(i), playersTeam.get(i + 1));
-			Plateform.getOrCreateConfigurationHelper(configuration).movePlayer(chosenPlayers.get(i + 1), playersTeam.get(i));
+			helper.movePlayer(chosenPlayers.get(i), playersTeam.get(i + 1));
+			helper.movePlayer(chosenPlayers.get(i + 1), playersTeam.get(i));
 		}
 	}
 
