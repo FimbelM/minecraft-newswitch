@@ -232,7 +232,7 @@
 			<code>NO_REVIVE_IN</code>
 			<value>Plus de résurrection dans %s</value> 
 		</message>
-				<message>
+		<message>
 			<code>ENTRY_PVP_DISABLED</code>
 			<value>PVP activé dans : </value> 
 		</message>
@@ -267,6 +267,10 @@
 		<message>
 			<code>NEXT_SWITCH_IN</code>
 			<value>Prochain échange dans : %s</value>
+		</message>
+		<message>
+			<code>SWITCH</code>
+			<value>Switch</value>
 		</message>
 		<message>
 			<code>AVERAGE_NUMBER_OF_SWITCH_EXPLANATION</code>

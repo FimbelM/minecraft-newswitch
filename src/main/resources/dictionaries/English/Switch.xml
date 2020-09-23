@@ -289,6 +289,10 @@
 			<value>Next switch in : %s</value>
 		</message>
 		<message>
+			<code>SWITCH</code>
+			<value>Switch</value>
+		</message>
+		<message>
 			<code>AVERAGE_NUMBER_OF_SWITCH_EXPLANATION</code>
 			<value>The chosen number is used by a Poisson law to randomly determine the number of switch that will occur during the game</value>
 		</message>
