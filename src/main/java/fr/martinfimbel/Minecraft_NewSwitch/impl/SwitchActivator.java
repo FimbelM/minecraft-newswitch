@@ -32,13 +32,14 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 	private IGameConfigurationHelper helper;
 	private IBorderConfiguration borderConf;
 	private int countdownTime, currentCountdown, lambda, count;
-	private boolean isRandomSwitchActivated;
+	private boolean isRandomSwitchActivated, isOnePlayerSwitchActivated;
 	private Map<Integer, LocalTime> switchTimes;
 	private Random rand = new Random();
 
 	public SwitchActivator(ISwitchConfiguration configuration) {
 		this.configuration = configuration;
 		helper = Plateform.getOrCreateConfigurationHelper(configuration);
+		isOnePlayerSwitchActivated = configuration.isOnePlayerSwitchActivated();
 	}
 
 	public void initializeTimeMap() {
@@ -211,16 +212,36 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 	private List<Player> selectPlayers(List<Player> playerList) {
 		List<Player> selectedPlayers = new ArrayList<>();
 
-		// choix joueur 1
+		// Selecting player one
 		Player chosenPlayerOne = playerList.get(rand.nextInt(playerList.size()));
 		ITeam playerOneTeam = helper.getTeam(chosenPlayerOne).get();
+
+		// Verifying that selected player one is not alone in his team if OnePlayerSwitch is unabled
+		if (!isOnePlayerSwitchActivated) {
+			while (helper.isAlone(chosenPlayerOne)) {
+				chosenPlayerOne = playerList.get(rand.nextInt(playerList.size()));
+				playerOneTeam = helper.getTeam(chosenPlayerOne).get();
+				playerList.remove(chosenPlayerOne);
+			}
+		}
+
 		playerList.remove(chosenPlayerOne);
 		selectedPlayers.add(chosenPlayerOne);
 
-		// choix du joueur 2 avec tri
+		// Selecting player two with team conditions
 		Player chosenPlayerTwo = playerList.get(rand.nextInt(playerList.size()));
-		playerList.remove(chosenPlayerTwo);
 		ITeam playerTwoTeam = helper.getTeam(chosenPlayerTwo).get();
+
+		// Verifying that selected player two is not alone in his team if OnePlayerSwitch is unabled
+		if (!isOnePlayerSwitchActivated) {
+			while (helper.isAlone(chosenPlayerTwo)) {
+				chosenPlayerTwo = playerList.get(rand.nextInt(playerList.size()));
+				playerTwoTeam = helper.getTeam(chosenPlayerTwo).get();
+				playerList.remove(chosenPlayerTwo);
+			}
+		}
+
+		playerList.remove(chosenPlayerTwo);
 		while (playerTwoTeam == playerOneTeam) {
 			chosenPlayerTwo = playerList.get(rand.nextInt(playerList.size()));
 			playerList.remove(chosenPlayerTwo);
