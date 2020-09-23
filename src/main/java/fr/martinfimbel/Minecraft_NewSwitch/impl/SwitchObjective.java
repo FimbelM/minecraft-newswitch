@@ -77,7 +77,8 @@ public class SwitchObjective extends GameObjective<ISwitchConfiguration> impleme
 
 	@Override
 	public void initiate() {
-		add(score -> new LocationEntry(score).addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
+		IBorderConfiguration overworld = getConfiguration().getBorder(WorldManager.OVERWORLD).get();
+		add(score -> new LocationEntry(score, overworld.getBorderCenter()).addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
 		add(score -> new CenterEntry(score, getConfiguration().getBorder(WorldManager.OVERWORLD).get().getBorderCenter())
 				.addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
 		emptyEntry(score--);
