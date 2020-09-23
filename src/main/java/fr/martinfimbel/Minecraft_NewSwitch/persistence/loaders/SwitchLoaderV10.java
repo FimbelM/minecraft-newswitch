@@ -42,11 +42,28 @@ public class SwitchLoaderV10 extends AbstractSwitchLoader {
 		}
 
 		// Getting configuration times
-		Node times = getElementsByTagName(root, SwitchXmlTag.TIMES).item(0);
-		get().setPvpTime(getLocalTimeAttribute((Element) times, SwitchXmlTag.PVP));
-		get().setPlayerDontReviveTime(getLocalTimeAttribute((Element) times, SwitchXmlTag.PLAYER_DONT_REVIVE));
+		Element times = (Element) getElementsByTagName(root, SwitchXmlTag.TIMES).item(0);
+		get().setPvpTime(getLocalTimeAttribute(times, SwitchXmlTag.PVP));
+		get().setPlayerDontReviveTime(getLocalTimeAttribute(times, SwitchXmlTag.PLAYER_DONT_REVIVE));
+		get().setStartSwitchTime(getLocalTimeAttribute(times, SwitchXmlTag.START_SWITCH_TIME));
+		get().setPeriodSwitchTime(getLocalTimeAttribute(times, SwitchXmlTag.PERIODIC_SWITCH_TIME));
+		get().setMaximalSwitchTime(getLocalTimeAttribute(times, SwitchXmlTag.MAXIMUM_SWITCH_TIME));
+		get().setMinimalSwitchTime(getLocalTimeAttribute(times, SwitchXmlTag.MINIMUM_SWITCH_TIME));
+		get().setSwitchCountdownTime(getLocalTimeAttribute(times, SwitchXmlTag.SWITCH_COUNTDOWN_TIME));
 
 		get().clearTeams();
+
+		// Getting configuration integers
+		Element integers = (Element) getElementsByTagName(root, SwitchXmlTag.INTEGER).item(0);
+		get().setAverageNumberOfSwitch(getIntAttribute(integers, SwitchXmlTag.AVERAGE_NUMBER));
+		get().setNumberOfPlayerSwitchable(getIntAttribute(integers, SwitchXmlTag.NUMBER_OF_SWITCHABLE_PLAYERS));
+
+		// Getting configuration booleans
+		Element booleans = (Element) getElementsByTagName(root, SwitchXmlTag.BOOLEANS).item(0);
+		get().setOnePlayerSwitch(getBooleanAttribute(booleans, SwitchXmlTag.ONE_PLAYER_SWITCH));
+		get().setRandomSwitch(getBooleanAttribute(booleans, SwitchXmlTag.RANDOM_SWITCH));
+		get().setSwitchAfterBorderMovesActivated(getBooleanAttribute(booleans, SwitchXmlTag.SWITCH_AFTER_BORDER_MOVES));
+
 		// Getting configuration teams
 		NodeList teams = getElementsByTagName(root, SwitchXmlTag.TEAM);
 		for (int i = 0; i < teams.getLength(); i++) {

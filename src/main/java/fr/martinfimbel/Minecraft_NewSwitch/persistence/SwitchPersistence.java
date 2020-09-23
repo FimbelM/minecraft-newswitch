@@ -72,7 +72,23 @@ public class SwitchPersistence extends AbstractMinecraftPersistence<ISwitchConfi
 		Element times = createElement(doc, SwitchXmlTag.TIMES);
 		setAttribute(times, SwitchXmlTag.PVP, get().getPvpTime());
 		setAttribute(times, SwitchXmlTag.PLAYER_DONT_REVIVE, get().getPlayerDontReviveTime());
+		setAttribute(times, SwitchXmlTag.START_SWITCH_TIME, get().getStartSwitchTime());
+		setAttribute(times, SwitchXmlTag.PERIODIC_SWITCH_TIME, get().getPeriodSwitchTime());
+		setAttribute(times, SwitchXmlTag.MINIMUM_SWITCH_TIME, get().getMinimalSwitchTime());
+		setAttribute(times, SwitchXmlTag.MAXIMUM_SWITCH_TIME, get().getMaximalSwitchTime());
+		setAttribute(times, SwitchXmlTag.SWITCH_COUNTDOWN_TIME, get().getSwitchCountdownTime());
 		root.appendChild(times);
+
+		Element integer = createElement(doc, SwitchXmlTag.INTEGER);
+		setAttribute(integer, SwitchXmlTag.AVERAGE_NUMBER, get().getAverageNumberOfSwitch());
+		setAttribute(integer, SwitchXmlTag.NUMBER_OF_SWITCHABLE_PLAYERS, get().getNumberOfPlayerSwitchable());
+		root.appendChild(integer);
+
+		Element booleans = createElement(doc, SwitchXmlTag.BOOLEANS);
+		setAttribute(booleans, SwitchXmlTag.ONE_PLAYER_SWITCH, get().isOnePlayerSwitchActivated());
+		setAttribute(booleans, SwitchXmlTag.RANDOM_SWITCH, get().isRandomSwitchActivated());
+		setAttribute(booleans, SwitchXmlTag.SWITCH_AFTER_BORDER_MOVES, get().isSwitchAfterBorderMovesActivated());
+		root.appendChild(booleans);
 
 		Element teams = createElement(doc, SwitchXmlTag.TEAMS);
 		for (ITeam t : get().getTeams()) {
