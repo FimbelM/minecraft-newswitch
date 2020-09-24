@@ -63,6 +63,7 @@ public class SwitchLoaderV10 extends AbstractSwitchLoader {
 		get().setOnePlayerSwitch(getBooleanAttribute(booleans, SwitchXmlTag.ONE_PLAYER_SWITCH));
 		get().setRandomSwitch(getBooleanAttribute(booleans, SwitchXmlTag.RANDOM_SWITCH));
 		get().setSwitchAfterBorderMovesActivated(getBooleanAttribute(booleans, SwitchXmlTag.SWITCH_AFTER_BORDER_MOVES));
+		get().setOnePermutationPerSwitchActivated(getBooleanAttribute(booleans, SwitchXmlTag.ONE_PERMUTATION_PER_SWITCH));
 
 		// Getting configuration teams
 		NodeList teams = getElementsByTagName(root, SwitchXmlTag.TEAM);

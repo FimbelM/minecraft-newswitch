@@ -166,4 +166,20 @@ public interface ISwitchConfiguration extends IGameBorderConfiguration {
 	 */
 	LocalTime getMaximalSwitchTime();
 
+	/**
+	 * Define if there is only two players in the whole game that are switched, or if one player is permuted with another one in every
+	 * team
+	 * 
+	 * @param onePermutationPerSwitch as defined or default value
+	 */
+	void setOnePermutationPerSwitchActivated(boolean onePermutationPerSwitch);
+
+	/**
+	 * Define if there is only two players in the whole game that are switched, or if one player is permuted with another one in every
+	 * team
+	 * 
+	 * @param onePermutationPerSwitch as defined or default value
+	 */
+	boolean isOnePermutationPerSwitchActivated();
+
 }

@@ -293,6 +293,10 @@
 			<value>Switch</value>
 		</message>
 		<message>
+			<code>NO_SWITCH_AVAILABLE</code>
+			<value>Not enough players remaining, switches are disabled</value>
+		</message>
+		<message>
 			<code>AVERAGE_NUMBER_OF_SWITCH_EXPLANATION</code>
 			<value>The chosen number is used by a Poisson law to randomly determine the number of switch that will occur during the game</value>
 		</message>
@@ -336,6 +340,17 @@
 			<code>RANDOM_SWITCH_MINIMAL_MAXIMAL_TIME_TAB_COMPLETE</code>
 			<value>hh:mm:ss</value>
 		</message>
-		
+		<message>
+			<code>ONE_PERMUTATION_PER_SWITCH_EXPLANATION</code>
+			<value>To set if only two or every teams will have permutation (true = two players)</value>
+		</message>
+		<message>
+			<code>ONE_PERMUTATION_PER_SWITCH_DEFINED</code>
+			<value>One permutation per switch has been defined to : %s</value>
+		</message>
+		<message>
+			<code>ONE_PERMUTATION_PER_SWITCH_VALUE_IS_MISSING</code>
+			<value>One permutation per switch cannot be defined, value is missing</value>
+		</message>
 	</messages>
 </dictionary>

@@ -273,6 +273,10 @@
 			<value>Switch</value>
 		</message>
 		<message>
+			<code>NO_SWITCH_AVAILABLE</code>
+			<value>Plus assez de joueurs restants, switchs désactivés</value>
+		</message>
+		<message>
 			<code>AVERAGE_NUMBER_OF_SWITCH_EXPLANATION</code>
 			<value>Le nombre choisi est utilisé par une loi de poisson pour déterminer le nombre d'échange dans une partie de manière aléatoire </value>
 		</message>
@@ -315,6 +319,18 @@
 		<message>
 			<code>RANDOM_SWITCH_MINIMAL_MAXIMAL_TIME_TAB_COMPLETE</code>
 			<value>hh:mm:ss</value>
+		</message>
+		<message>
+			<code>ONE_PERMUTATION_PER_SWITCH_EXPLANATION</code>
+			<value>Pour définir si seulement deux ou toutes les équipes sont concernées (true = seulement deux équipes)</value>
+		</message>
+		<message>
+			<code>ONE_PERMUTATION_PER_SWITCH_DEFINED</code>
+			<value>Un seul échange de joueurs à été défini à : %s</value>
+		</message>
+		<message>
+			<code>ONE_PERMUTATION_PER_SWITCH_VALUE_IS_MISSING</code>
+			<value>Un seul échange de joueurs n'a pas pu être défini, il manque la valeur</value>
 		</message>
 	</messages>
 </dictionary>

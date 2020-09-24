@@ -24,13 +24,14 @@ public class SwitchConfiguration extends AbstractGameBorderConfiguration impleme
 	private static final Boolean DEFAULT_SWITCH_AFTER_BORDER_MOVES = false;
 	private static final Boolean DEFAULT_RANDOM_SWITCH = false;
 	private static final Boolean DEFAULT_ONE_PLAYER_SWITCH = false;
+	private static final Boolean DEFAULT_ONE_PERMUTATION_SWITCH = true;
 	private static final Integer DEFAULT_NUMBER_OF_PLAYER_SWITCHABLE = 1;
 	private static final Integer DEFAULT_AVERAGE_NUMBER_OF_SWITCH = 5;
 
 	private IGame game;
 	private LocalTime playerDontReviveTime, startSwitchTime, periodicSwitchTime, beforeSwitchCountdown, minimalRandomSwitchTime, maximalRandomSwitchTime;
 	private Integer numberOfPlayerSwitchable, averageNumberOfSwitch;
-	private Boolean isSwitchAfterBorderMoves, isRandomSwitch, isOnePlayerSwitch;
+	private Boolean isSwitchAfterBorderMoves, isRandomSwitch, isOnePlayerSwitch, isOnePermutation;
 
 	public SwitchConfiguration(String name) {
 		super(name);
@@ -84,6 +85,7 @@ public class SwitchConfiguration extends AbstractGameBorderConfiguration impleme
 		joiner.add("Average switch number : " + display(averageNumberOfSwitch, "" + getAverageNumberOfSwitch()));
 		joiner.add("Minimal time without switch when random : " + display(minimalRandomSwitchTime, "" + getMinimalSwitchTime()));
 		joiner.add("Maximal time with switch when random : " + display(maximalRandomSwitchTime, "" + getMaximalSwitchTime()));
+		joiner.add("One permutation only : " + display(isOnePermutation, "" + isOnePermutationPerSwitchActivated()));
 		return joiner.toString();
 	}
 
@@ -187,6 +189,17 @@ public class SwitchConfiguration extends AbstractGameBorderConfiguration impleme
 	@Override
 	public LocalTime getMaximalSwitchTime() {
 		return maximalRandomSwitchTime == null ? DEFAULT_MAXIMAL_RANDOM_SWITCH_TIME : maximalRandomSwitchTime;
+	}
+
+	@Override
+	public void setOnePermutationPerSwitchActivated(boolean onePermutationPerSwitch) {
+		this.isOnePermutation = onePermutationPerSwitch;
+
+	}
+
+	@Override
+	public boolean isOnePermutationPerSwitchActivated() {
+		return isOnePermutation == null ? DEFAULT_ONE_PERMUTATION_SWITCH : isOnePermutation;
 	}
 
 }

@@ -88,6 +88,7 @@ public class SwitchPersistence extends AbstractMinecraftPersistence<ISwitchConfi
 		setAttribute(booleans, SwitchXmlTag.ONE_PLAYER_SWITCH, get().isOnePlayerSwitchActivated());
 		setAttribute(booleans, SwitchXmlTag.RANDOM_SWITCH, get().isRandomSwitchActivated());
 		setAttribute(booleans, SwitchXmlTag.SWITCH_AFTER_BORDER_MOVES, get().isSwitchAfterBorderMovesActivated());
+		setAttribute(booleans, SwitchXmlTag.ONE_PERMUTATION_PER_SWITCH, get().isOnePermutationPerSwitchActivated());
 		root.appendChild(booleans);
 
 		Element teams = createElement(doc, SwitchXmlTag.TEAMS);
