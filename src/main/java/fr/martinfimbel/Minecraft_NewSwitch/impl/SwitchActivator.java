@@ -149,8 +149,8 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 		// choix des joueurs
 		List<Player> chosenPlayers = selectPlayers();
 		if (chosenPlayers == null) {
-			sendNotSynchro(ESwitchMessageCode.NO_SWITCH_AVAILABLE, DisplayOption.TITLE, EColor.DARK_RED);
 			isNextSwitchAvailable = false;
+			return;
 		}
 
 		// récuperer équipes
@@ -213,7 +213,7 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 
 	private List<Player> selectPlayers() {
 		List<Player> selectedPlayers = new ArrayList<>();
-		List<ITeam> everyTeam = configuration.getTeams();
+		List<ITeam> everyTeam = new ArrayList<ITeam>(configuration.getTeams());
 
 		while (everyTeam.size() > 1) {
 			// selecting player one of every switch
@@ -231,6 +231,9 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 			}
 
 			everyTeam.remove(selectedFirstTeam);
+
+			if (everyTeam.isEmpty())
+				return null;
 
 			Stream<Player> availablePlayersInFirstTeam = selectedFirstTeam.getPlayers().stream().filter(player -> player.getGameMode().equals(GameMode.SURVIVAL));
 			List<Player> firstTeamAvailablePlayerList = availablePlayersInFirstTeam.collect(Collectors.toList());
