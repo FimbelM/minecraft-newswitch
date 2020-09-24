@@ -32,7 +32,7 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 	private IGameConfigurationHelper helper;
 	private IBorderConfiguration borderConf;
 	private int countdownTime, currentCountdown, lambda, count;
-	private boolean isRandomSwitchActivated, isOnePlayerSwitchActivated;
+	private boolean isRandomSwitchActivated, isOnePlayerSwitchActivated, isNextSwitchAvailable, isOnePermutationPerSwitch;
 	private Map<Integer, LocalTime> switchTimes;
 	private Random rand = new Random();
 
@@ -40,6 +40,7 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 		this.configuration = configuration;
 		helper = Plateform.getOrCreateConfigurationHelper(configuration);
 		isOnePlayerSwitchActivated = configuration.isOnePlayerSwitchActivated();
+		isOnePermutationPerSwitch = configuration.isOnePermutationPerSwitchActivated();
 	}
 
 	public void initializeTimeMap() {
@@ -145,12 +146,13 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 	public void onTime(LocalTime currentTime) {
 		// Plateform.getOrCreateConfigurationHelper(configuration) --> accès à toutes les commandes concernant les équipes;
 
-		// setup de la liste de joueurs
-		Stream<Player> availablePlayersStream = helper.getNotFreePlayers().filter(player -> player.getGameMode().equals(GameMode.SURVIVAL));
-		List<Player> availablePlayerList = availablePlayersStream.collect(Collectors.toList());
-
 		// choix des joueurs
-		List<Player> chosenPlayers = selectPlayers(availablePlayerList);
+		List<Player> chosenPlayers = selectPlayers();
+		if (chosenPlayers == null) {
+			sendNotSynchro(ESwitchMessageCode.NO_SWITCH_AVAILABLE, DisplayOption.TITLE, EColor.DARK_RED);
+			isNextSwitchAvailable = false;
+		}
+
 		// récuperer équipes
 		List<ITeam> playersTeam = selectedPlayersTeam(chosenPlayers);
 
@@ -173,7 +175,7 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 
 	@Override
 	public LocalTime getNextNotifiedTime() {
-		if (count == switchTimes.size())
+		if (count == switchTimes.size() || !isNextSwitchAvailable)
 			return LocalTime.of(0, 0, 0);
 
 		LocalTime nextSwitch = switchTimes.get(count);
@@ -209,46 +211,59 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 		switchTimes = result;
 	}
 
-	private List<Player> selectPlayers(List<Player> playerList) {
+	private List<Player> selectPlayers() {
 		List<Player> selectedPlayers = new ArrayList<>();
+		List<ITeam> everyTeam = configuration.getTeams();
 
-		// Selecting player one
-		Player chosenPlayerOne = playerList.get(rand.nextInt(playerList.size()));
-		ITeam playerOneTeam = helper.getTeam(chosenPlayerOne).get();
+		while (everyTeam.size() > 1) {
+			// selecting player one of every switch
+			ITeam selectedFirstTeam = everyTeam.get(rand.nextInt(everyTeam.size()));
 
-		// Verifying that selected player one is not alone in his team if OnePlayerSwitch is unabled
-		if (!isOnePlayerSwitchActivated) {
-			while (helper.isAlone(chosenPlayerOne)) {
-				chosenPlayerOne = playerList.get(rand.nextInt(playerList.size()));
-				playerOneTeam = helper.getTeam(chosenPlayerOne).get();
-				playerList.remove(chosenPlayerOne);
+			// Verifying if player is alone in his team
+			if (!isOnePlayerSwitchActivated) {
+				while (selectedFirstTeam.getPlayers().size() == 1) {
+					if (everyTeam.size() == 0)
+						return null;
+					selectedFirstTeam = everyTeam.get(rand.nextInt(everyTeam.size()));
+					everyTeam.remove(selectedFirstTeam);
+
+				}
 			}
-		}
 
-		playerList.remove(chosenPlayerOne);
-		selectedPlayers.add(chosenPlayerOne);
+			everyTeam.remove(selectedFirstTeam);
 
-		// Selecting player two with team conditions
-		Player chosenPlayerTwo = playerList.get(rand.nextInt(playerList.size()));
-		ITeam playerTwoTeam = helper.getTeam(chosenPlayerTwo).get();
+			Stream<Player> availablePlayersInFirstTeam = selectedFirstTeam.getPlayers().stream().filter(player -> player.getGameMode().equals(GameMode.SURVIVAL));
+			List<Player> firstTeamAvailablePlayerList = availablePlayersInFirstTeam.collect(Collectors.toList());
 
-		// Verifying that selected player two is not alone in his team if OnePlayerSwitch is unabled
-		if (!isOnePlayerSwitchActivated) {
-			while (helper.isAlone(chosenPlayerTwo)) {
-				chosenPlayerTwo = playerList.get(rand.nextInt(playerList.size()));
-				playerTwoTeam = helper.getTeam(chosenPlayerTwo).get();
-				playerList.remove(chosenPlayerTwo);
+			Player chosenPlayerOne = firstTeamAvailablePlayerList.get(rand.nextInt(firstTeamAvailablePlayerList.size()));
+
+			selectedPlayers.add(chosenPlayerOne);
+
+			// selecting player two of every switch
+			ITeam selectedSecondTeam = everyTeam.get(rand.nextInt(everyTeam.size()));
+
+			// Verifying if player is alone in his team
+			if (!isOnePlayerSwitchActivated) {
+				while (selectedSecondTeam.getPlayers().size() == 1) {
+					if (everyTeam.size() == 0)
+						return null;
+					selectedSecondTeam = everyTeam.get(rand.nextInt(everyTeam.size()));
+					everyTeam.remove(selectedSecondTeam);
+				}
 			}
-		}
 
-		playerList.remove(chosenPlayerTwo);
-		while (playerTwoTeam == playerOneTeam) {
-			chosenPlayerTwo = playerList.get(rand.nextInt(playerList.size()));
-			playerList.remove(chosenPlayerTwo);
-			playerTwoTeam = helper.getTeam(chosenPlayerTwo).get();
-		}
-		selectedPlayers.add(chosenPlayerTwo);
+			everyTeam.remove(selectedSecondTeam);
 
+			Stream<Player> availablePlayersInSecondTeam = selectedSecondTeam.getPlayers().stream().filter(player -> player.getGameMode().equals(GameMode.SURVIVAL));
+			List<Player> secondTeamAvailablePlayerList = availablePlayersInSecondTeam.collect(Collectors.toList());
+
+			Player chosenPlayerTwo = secondTeamAvailablePlayerList.get(rand.nextInt(secondTeamAvailablePlayerList.size()));
+
+			selectedPlayers.add(chosenPlayerTwo);
+			if (isOnePermutationPerSwitch)
+				break;
+
+		}
 		return selectedPlayers;
 	}
 
@@ -264,6 +279,7 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 
 	private void teleportSelectedPlayers(List<Player> chosenPlayers) {
 		List<Location> location = new ArrayList<>();
+
 		for (int i = 0; i < chosenPlayers.size(); i++) {
 			Player actualPlayer = chosenPlayers.get(i);
 			location.add(actualPlayer.getLocation());
