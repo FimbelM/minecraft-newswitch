@@ -332,5 +332,17 @@
 			<code>ONE_PERMUTATION_PER_SWITCH_VALUE_IS_MISSING</code>
 			<value>Un seul échange de joueurs n'a pas pu être défini, il manque la valeur</value>
 		</message>
+		<message>
+			<code>OVERWORLD_BORDER_IS_MISSING</code>
+			<value>Il manque une bordure dans l'overworld, impossible de démarrer la partie : %s</value>
+		</message>	
+		<message>
+			<code>SWITCH_TIME_MAP_CANNOT_BE_FILLED_PERIODIC</code>
+			<value>Le planning des temps d'échanges ne peut pas être rempli car le premier échange arrive après le mouvement de la bordure, impossible de démarrer la partie %</value>
+		</message>	
+		<message>
+			<code>SWITCH_TIME_MAP_CANNOT_BE_FILLED_RANDOM</code>
+			<value>Le planning des temps d'échanges ne peut pas être rempli car le temps minimal entre les échanges ne peut pas être respecté, impossible de démarrer la partie %</value>
+		</message>	
 	</messages>
 </dictionary>

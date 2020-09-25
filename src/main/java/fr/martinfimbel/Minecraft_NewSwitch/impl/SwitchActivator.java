@@ -41,10 +41,11 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 		helper = Plateform.getOrCreateConfigurationHelper(configuration);
 		isOnePlayerSwitchActivated = configuration.isOnePlayerSwitchActivated();
 		isOnePermutationPerSwitch = configuration.isOnePermutationPerSwitchActivated();
+		switchTimes = new HashMap<>();
 	}
 
-	public void initializeTimeMap() {
-		switchTimes = new HashMap<>();
+	public boolean initializeTimeMap() {
+		switchTimes.clear();
 		borderConf = configuration.getBorder(WorldManager.OVERWORLD).get();
 		isRandomSwitchActivated = configuration.isRandomSwitchActivated();
 		countdownTime = configuration.getSwitchCountdownTime().toSecondOfDay();
@@ -66,10 +67,14 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 
 		// Cas pas random
 		if (!isRandomSwitchActivated) {
+
 			// initialization of map
 			switchTimes.put(switchCount, startSwitchTime);
 
 			if (!isSwitchAfterBorderMoves) {
+				if (startSwitchTime.toSecondOfDay() > borderStartTime.toSecondOfDay())
+					return false;
+
 				do {
 					switchCount++;
 					nextSwitchTime = nextSwitchTime.plusSeconds(periodicSwitchTime.toSecondOfDay());
@@ -96,15 +101,17 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 		// cas random
 		else {
 
-			// Define upper bound as a function of isSwitchafterBorderMoves true or false
-			if (!isSwitchAfterBorderMoves)
-				upperBound = borderStartTime.minusSeconds(tmax.toSecondOfDay());
-			else
-				upperBound = borderStartTime.plusHours(1);
-
 			// Object that return random int.
 			switchCount = getPoissonRandom(lambda); // loi de poisson pour déterminer le nombre de switch en fonction d'un paramètre lambda
-			// BukkitManager.broadcastMessage("" + switchCount); // debugging and information
+
+			// Define upper bound as a function of isSwitchafterBorderMoves true or false
+			if (!isSwitchAfterBorderMoves) {
+				upperBound = borderStartTime.minusSeconds(tmax.toSecondOfDay());
+				if (switchCount * minimalIntervalBetweenSwitches.toSecondOfDay() > upperBound.toSecondOfDay())
+					return false;
+			} else
+				upperBound = borderStartTime.plusHours(1);
+
 			while (switchTimes.size() < switchCount) {
 
 				// generate a "integer" time between lower and upper bounds
@@ -129,7 +136,7 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 			 */
 
 		}
-
+		return true;
 	}
 
 	@Override

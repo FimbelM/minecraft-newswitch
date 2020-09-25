@@ -352,5 +352,17 @@
 			<code>ONE_PERMUTATION_PER_SWITCH_VALUE_IS_MISSING</code>
 			<value>One permutation per switch cannot be defined, value is missing</value>
 		</message>
+		<message>
+			<code>OVERWORLD_BORDER_IS_MISSING</code>
+			<value>Overworld border is missing, cannot start game : %s</value>
+		</message>	
+		<message>
+			<code>SWITCH_TIME_MAP_CANNOT_BE_FILLED_PERIODIC</code>
+			<value>Switch times planning cannot be filled because first switch occurs after border moves, cannot start game %s</value>
+		</message>	
+		<message>
+			<code>SWITCH_TIME_MAP_CANNOT_BE_FILLED_RANDOM</code>
+			<value>Switch times planning cannot be filled because minimum interval between switch times cannot be respected, cannot start game %s</value>
+		</message>	
 	</messages>
 </dictionary>

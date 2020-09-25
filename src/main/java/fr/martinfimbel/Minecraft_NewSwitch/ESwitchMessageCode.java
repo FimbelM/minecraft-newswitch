@@ -64,6 +64,9 @@ public enum ESwitchMessageCode implements IMinecraftMessageCode {
 	// Code for Entries
 	ENTRY_PVP_DISABLED, ENTRY_PVP_ENABLED, ENTRY_TIME_BEFORE_SWITCH, ENTRY_SWITCH_DEACTIVATED,
 
+	// Code for initial state issues
+	OVERWORLD_BORDER_IS_MISSING, SWITCH_TIME_MAP_CANNOT_BE_FILLED_PERIODIC, SWITCH_TIME_MAP_CANNOT_BE_FILLED_RANDOM,
+
 	// Code for in game messages
 	PVP_ENABLED(Permission.ALL), PLAYER_DONT_REVIVE(Permission.ALL), NO_REVIVE_IN(Permission.ALL), NEXT_SWITCH_IN(Permission.ALL), SWITCH(Permission.ALL),
 	NO_SWITCH_AVAILABLE(Permission.ALL);
