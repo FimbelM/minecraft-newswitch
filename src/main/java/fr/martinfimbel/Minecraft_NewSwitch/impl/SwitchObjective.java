@@ -23,7 +23,6 @@ import fr.pederobien.minecraftscoreboards.impl.updaters.UpdatersFactory;
 import fr.pederobien.minecraftscoreboards.interfaces.IEntry;
 
 public class SwitchObjective extends GameObjective<ISwitchConfiguration> implements ISwitchObjective {
-	private int score;
 
 	/**
 	 * Create an empty objective based on the given parameters.
@@ -38,7 +37,6 @@ public class SwitchObjective extends GameObjective<ISwitchConfiguration> impleme
 	 */
 	public SwitchObjective(Plugin plugin, Player player, String name, String displayName, String criteria, DisplaySlot displaySlot, ISwitchConfiguration configuration) {
 		super(plugin, player, name, displayName, criteria, displaySlot, configuration);
-		score = 0;
 	}
 
 	/**
@@ -81,24 +79,23 @@ public class SwitchObjective extends GameObjective<ISwitchConfiguration> impleme
 		add(score -> new LocationEntry(score, overworld.getBorderCenter()).addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
 		add(score -> new CenterEntry(score, getConfiguration().getBorder(WorldManager.OVERWORLD).get().getBorderCenter())
 				.addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
-		emptyEntry(score--);
+		emptyEntry(-entries().size());
 		add(score -> new TimeBeforePVPEntry(score, getConfiguration()).addUpdater(new TimeTaskObserverEntryUpdater()));
-		emptyEntry(score--);
+		emptyEntry(-entries().size());
 		for (IBorderConfiguration border : getConfiguration().getBorders())
 			add(score -> new WorldBorderSizeCountDownEntry(score, border, "#").setDisplayHalfSize(true).addUpdater(new TimeTaskObserverEntryUpdater()));
 	}
 
 	@Override
 	public void addTeams() {
-		emptyEntry(score--);
+		emptyEntry(-entries().size());
 		for (ITeam team : getConfiguration().getTeams())
 			if (!team.getPlayers().isEmpty())
 				add(score -> new TeamPlayerOnModeEntry(score, team, GameMode.SURVIVAL, true).addUpdater(UpdatersFactory.playerGameModeChange()));
 	}
 
 	private void add(Function<Integer, IEntry> constructor) {
-		addEntry(constructor.apply(score));
-		score--;
+		addEntry(constructor.apply(-entries().size()));
 	}
 
 }
