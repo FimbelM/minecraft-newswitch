@@ -23,6 +23,7 @@ public class SwitchParent extends AbstractGameBorderConfigurationParent<ISwitchC
 		addEdition(SwitchEditionFactory.averageNumberOfSwitch());
 		addEdition(SwitchEditionFactory.randomSwitchMinimalBound());
 		addEdition(SwitchEditionFactory.randomSwitchMaximalBound());
+		addEdition(SwitchEditionFactory.onePermutationPerSwitch());
 	}
 
 	@Override

@@ -118,4 +118,8 @@ public class SwitchEditionFactory {
 	public static IMapPersistenceEdition<ISwitchConfiguration> randomSwitchMaximalBound() {
 		return new RandomSwitchMaximalTimeBound();
 	}
+
+	public static IMapPersistenceEdition<ISwitchConfiguration> onePermutationPerSwitch() {
+		return new OnePermutationPerSwitch();
+	}
 }
