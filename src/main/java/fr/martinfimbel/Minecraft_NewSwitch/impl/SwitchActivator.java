@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -39,8 +38,6 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 	public SwitchActivator(ISwitchConfiguration configuration) {
 		this.configuration = configuration;
 		helper = Plateform.getOrCreateConfigurationHelper(configuration);
-		isOnePlayerSwitchActivated = configuration.isOnePlayerSwitchActivated();
-		isOnePermutationPerSwitch = configuration.isOnePermutationPerSwitchActivated();
 		switchTimes = new HashMap<>();
 	}
 
@@ -51,6 +48,9 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 		countdownTime = configuration.getSwitchCountdownTime().toSecondOfDay();
 		currentCountdown = countdownTime;
 		lambda = configuration.getAverageNumberOfSwitch();
+		isOnePlayerSwitchActivated = configuration.isOnePlayerSwitchActivated();
+		isOnePermutationPerSwitch = configuration.isOnePermutationPerSwitchActivated();
+		isNextSwitchAvailable = true;
 		count = 0;
 
 		LocalTime startSwitchTime = configuration.getStartSwitchTime();
@@ -92,10 +92,12 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 				} while (nextSwitchTime.toSecondOfDay() < borderConf.getMoveTime().plusSeconds(borderStartTime.toSecondOfDay()).plusHours(1).toSecondOfDay());
 			}
 			// display map
+
 			/*
-			 * BukkitManager.broadcastMessage("Switch times : "); for (int count = 0; count < switchTimes.size(); count++) {
-			 * BukkitManager.broadcastMessage("count : " + count + " " + switchTimes.get(count).toString()); }
+			 * for (int count = 0; count < switchTimes.size(); count++) { BukkitManager.broadcastMessage("count : " + count + " " +
+			 * switchTimes.get(count).toString()); }
 			 */
+
 		}
 
 		// cas random
@@ -130,6 +132,7 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 			sortMap();
 
 			// display map
+
 			/*
 			 * for (Map.Entry<Integer, LocalTime> entry : switchTimes.entrySet()) { BukkitManager.broadcastMessage("times : " + entry.getKey()
 			 * + " - " + entry.getValue()); }
@@ -223,57 +226,27 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 		List<ITeam> everyTeam = new ArrayList<ITeam>(configuration.getTeams());
 
 		while (everyTeam.size() > 1) {
+
 			// selecting player one of every switch
-			ITeam selectedFirstTeam = everyTeam.get(rand.nextInt(everyTeam.size()));
-
-			// Verifying if player is alone in his team
-			if (!isOnePlayerSwitchActivated) {
-				while (selectedFirstTeam.getPlayers().size() == 1) {
-					if (everyTeam.size() == 0)
-						return null;
-					selectedFirstTeam = everyTeam.get(rand.nextInt(everyTeam.size()));
-					everyTeam.remove(selectedFirstTeam);
-
-				}
-			}
-
-			everyTeam.remove(selectedFirstTeam);
-
-			if (everyTeam.isEmpty())
+			Player chosenPlayerOne = selectPlayer(everyTeam);
+			if (chosenPlayerOne == null)
 				return null;
-
-			Stream<Player> availablePlayersInFirstTeam = selectedFirstTeam.getPlayers().stream().filter(player -> player.getGameMode().equals(GameMode.SURVIVAL));
-			List<Player> firstTeamAvailablePlayerList = availablePlayersInFirstTeam.collect(Collectors.toList());
-
-			Player chosenPlayerOne = firstTeamAvailablePlayerList.get(rand.nextInt(firstTeamAvailablePlayerList.size()));
-
 			selectedPlayers.add(chosenPlayerOne);
 
 			// selecting player two of every switch
-			ITeam selectedSecondTeam = everyTeam.get(rand.nextInt(everyTeam.size()));
+			if (everyTeam.isEmpty())
+				return null;
 
-			// Verifying if player is alone in his team
-			if (!isOnePlayerSwitchActivated) {
-				while (selectedSecondTeam.getPlayers().size() == 1) {
-					if (everyTeam.size() == 0)
-						return null;
-					selectedSecondTeam = everyTeam.get(rand.nextInt(everyTeam.size()));
-					everyTeam.remove(selectedSecondTeam);
-				}
-			}
-
-			everyTeam.remove(selectedSecondTeam);
-
-			Stream<Player> availablePlayersInSecondTeam = selectedSecondTeam.getPlayers().stream().filter(player -> player.getGameMode().equals(GameMode.SURVIVAL));
-			List<Player> secondTeamAvailablePlayerList = availablePlayersInSecondTeam.collect(Collectors.toList());
-
-			Player chosenPlayerTwo = secondTeamAvailablePlayerList.get(rand.nextInt(secondTeamAvailablePlayerList.size()));
+			Player chosenPlayerTwo = selectPlayer(everyTeam);
+			if (chosenPlayerTwo == null)
+				return null;
 
 			selectedPlayers.add(chosenPlayerTwo);
 			if (isOnePermutationPerSwitch)
 				break;
 
 		}
+
 		return selectedPlayers;
 	}
 
@@ -306,6 +279,37 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 			helper.movePlayer(chosenPlayers.get(i), playersTeam.get(i + 1));
 			helper.movePlayer(chosenPlayers.get(i + 1), playersTeam.get(i));
 		}
+	}
+
+	private Player selectPlayer(List<ITeam> everyTeam) {
+		ITeam selectedTeam = everyTeam.get(rand.nextInt(everyTeam.size()));
+		List<Player> availablePlayersInTeamList = listOfPlayers(selectedTeam);
+		// Verifying if player is alone in his team
+		if (!isOnePlayerSwitchActivated) {
+			while (availablePlayersInTeamList.size() <= 1) {
+				everyTeam.remove(selectedTeam);
+				if (everyTeam.size() == 0)
+					return null;
+				selectedTeam = everyTeam.get(rand.nextInt(everyTeam.size()));
+				availablePlayersInTeamList = listOfPlayers(selectedTeam);
+			}
+		} else {
+			while (availablePlayersInTeamList.size() == 0) {
+				everyTeam.remove(selectedTeam);
+				if (everyTeam.size() == 0)
+					return null;
+				selectedTeam = everyTeam.get(rand.nextInt(everyTeam.size()));
+				availablePlayersInTeamList = listOfPlayers(selectedTeam);
+			}
+		}
+		everyTeam.remove(selectedTeam);
+
+		return availablePlayersInTeamList.get(rand.nextInt(availablePlayersInTeamList.size()));
+
+	}
+
+	private List<Player> listOfPlayers(ITeam selectedTeam) {
+		return PlayerManager.getPlayersOnMode(selectedTeam.getPlayers().stream(), GameMode.SURVIVAL).collect(Collectors.toList());
 	}
 
 	// rajouter classe interne qui permet de découper ontime en plusieurs méthodes
