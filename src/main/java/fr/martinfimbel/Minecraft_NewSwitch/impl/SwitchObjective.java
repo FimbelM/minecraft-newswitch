@@ -12,13 +12,12 @@ import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitchConfiguration;
 import fr.martinfimbel.Minecraft_NewSwitch.interfaces.ISwitchObjective;
 import fr.pederobien.minecraftborder.entries.WorldBorderSizeCountDownEntry;
 import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
-import fr.pederobien.minecraftgameplateform.entries.simple.CenterEntry;
-import fr.pederobien.minecraftgameplateform.entries.simple.LocationEntry;
+import fr.pederobien.minecraftgameplateform.entries.simple.CenterSynchronizedEntry;
+import fr.pederobien.minecraftgameplateform.entries.simple.LocationSynchronizedEntry;
 import fr.pederobien.minecraftgameplateform.entries.simple.TeamPlayerOnModeEntry;
 import fr.pederobien.minecraftgameplateform.entries.updaters.TimeTaskObserverEntryUpdater;
 import fr.pederobien.minecraftgameplateform.impl.element.GameObjective;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
-import fr.pederobien.minecraftmanagers.WorldManager;
 import fr.pederobien.minecraftscoreboards.impl.updaters.UpdatersFactory;
 import fr.pederobien.minecraftscoreboards.interfaces.IEntry;
 
@@ -75,10 +74,8 @@ public class SwitchObjective extends GameObjective<ISwitchConfiguration> impleme
 
 	@Override
 	public void initiate() {
-		IBorderConfiguration overworld = getConfiguration().getBorder(WorldManager.OVERWORLD).get();
-		add(score -> new LocationEntry(score, overworld.getBorderCenter()).addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
-		add(score -> new CenterEntry(score, getConfiguration().getBorder(WorldManager.OVERWORLD).get().getBorderCenter())
-				.addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
+		add(score -> new LocationSynchronizedEntry(score).addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
+		add(score -> new CenterSynchronizedEntry(score).addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
 		emptyEntry(-entries().size());
 		add(score -> new TimeBeforePVPEntry(score, getConfiguration()).addUpdater(new TimeTaskObserverEntryUpdater()));
 		emptyEntry(-entries().size());
