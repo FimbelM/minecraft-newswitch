@@ -21,6 +21,7 @@ import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
 import fr.pederobien.minecraftgameplateform.interfaces.helpers.IGameConfigurationHelper;
 import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.IObsTimeLine;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
+import fr.pederobien.minecraftmanagers.BukkitManager;
 import fr.pederobien.minecraftmanagers.EColor;
 import fr.pederobien.minecraftmanagers.MessageManager.DisplayOption;
 import fr.pederobien.minecraftmanagers.PlayerManager;
@@ -132,12 +133,10 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 			sortMap();
 
 			// display map
-
 			/*
 			 * for (Map.Entry<Integer, LocalTime> entry : switchTimes.entrySet()) { BukkitManager.broadcastMessage("times : " + entry.getKey()
 			 * + " - " + entry.getValue()); }
 			 */
-
 		}
 		return true;
 	}
@@ -158,6 +157,7 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 
 		// choix des joueurs
 		List<Player> chosenPlayers = selectPlayers();
+		BukkitManager.broadcastMessage("Chosen players : " + chosenPlayers);
 		if (chosenPlayers == null) {
 			isNextSwitchAvailable = false;
 			return;
@@ -267,6 +267,7 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 			Player actualPlayer = chosenPlayers.get(i);
 			location.add(actualPlayer.getLocation());
 		}
+
 		for (int i = 0; i < chosenPlayers.size(); i += 2) {
 			PlayerManager.teleporte(chosenPlayers.get(i), location.get(i + 1));
 			PlayerManager.teleporte(chosenPlayers.get(i + 1), location.get(i));
@@ -283,6 +284,7 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 
 	private Player selectPlayer(List<ITeam> everyTeam) {
 		ITeam selectedTeam = everyTeam.get(rand.nextInt(everyTeam.size()));
+
 		List<Player> availablePlayersInTeamList = listOfPlayers(selectedTeam);
 		// Verifying if player is alone in his team
 		if (!isOnePlayerSwitchActivated) {
