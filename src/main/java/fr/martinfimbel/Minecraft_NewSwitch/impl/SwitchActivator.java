@@ -21,7 +21,6 @@ import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
 import fr.pederobien.minecraftgameplateform.interfaces.helpers.IGameConfigurationHelper;
 import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.IObsTimeLine;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
-import fr.pederobien.minecraftmanagers.BukkitManager;
 import fr.pederobien.minecraftmanagers.EColor;
 import fr.pederobien.minecraftmanagers.MessageManager.DisplayOption;
 import fr.pederobien.minecraftmanagers.PlayerManager;
@@ -157,11 +156,9 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 
 		// choix des joueurs
 		List<Player> chosenPlayers = selectPlayers();
-		BukkitManager.broadcastMessage("Chosen players : " + chosenPlayers);
-		if (chosenPlayers == null) {
+
+		if (chosenPlayers.isEmpty())
 			isNextSwitchAvailable = false;
-			return;
-		}
 
 		// récuperer équipes
 		List<ITeam> playersTeam = selectedPlayersTeam(chosenPlayers);
@@ -230,16 +227,19 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 			// selecting player one of every switch
 			Player chosenPlayerOne = selectPlayer(everyTeam);
 			if (chosenPlayerOne == null)
-				return null;
+				return selectedPlayers;
 			selectedPlayers.add(chosenPlayerOne);
 
 			// selecting player two of every switch
-			if (everyTeam.isEmpty())
-				return null;
-
+			if (everyTeam.isEmpty()) {
+				selectedPlayers.remove(chosenPlayerOne);
+				return selectedPlayers;
+			}
 			Player chosenPlayerTwo = selectPlayer(everyTeam);
-			if (chosenPlayerTwo == null)
-				return null;
+			if (chosenPlayerTwo == null) {
+				selectedPlayers.remove(chosenPlayerOne);
+				return selectedPlayers;
+			}
 
 			selectedPlayers.add(chosenPlayerTwo);
 			if (isOnePermutationPerSwitch)
@@ -314,5 +314,4 @@ public class SwitchActivator implements IObsTimeLine, IPlateformCodeSender {
 		return PlayerManager.getPlayersOnMode(selectedTeam.getPlayers().stream(), GameMode.SURVIVAL).collect(Collectors.toList());
 	}
 
-	// rajouter classe interne qui permet de découper ontime en plusieurs méthodes
 }
